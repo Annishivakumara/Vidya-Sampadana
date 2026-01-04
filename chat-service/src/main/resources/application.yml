@@ -1,0 +1,24 @@
+server:
+  port: 8092 # Student=8081, Mentor=8082, Session=8083, Payment=8084, IAM=8085, User=8086, Document=8087, Notification=8088, Course=8089, Analytics=8090, Chat=8092
+
+spring:
+  application:
+    name: chat-service
+
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/chat_db
+
+eureka:
+  client:
+    enabled: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    fetch-registry: false
+    register-with-eureka: false
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
