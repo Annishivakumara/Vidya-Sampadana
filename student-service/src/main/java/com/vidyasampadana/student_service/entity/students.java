@@ -15,7 +15,7 @@ public class students {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 
     @Id
     @Column(name = "userId" , nullable = false, unique = true)
