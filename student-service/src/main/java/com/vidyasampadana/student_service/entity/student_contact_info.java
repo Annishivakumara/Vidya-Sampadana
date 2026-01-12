@@ -9,24 +9,17 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-    @Entity
-    @Table(name = "student_contact_info"
-//            indexes = {
-//                    @Index(name = "idx_student_id", columnList = "student_id"),
-//                    @Index(name = "idx_email", columnList = "email"),
-//                    @Index(name = "idx_phone", columnList = "phone")
-//            }
-            )
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public class student_contact_info {
+@Data
+@Entity
+@Table(name = "student_contact_info")
+@AllArgsConstructor
+@NoArgsConstructor
+public class student_contact_info {
 
         @Id
         @Column(length = 36, nullable = false, updatable = false)
-        private String id = UUID.randomUUID().toString();  //immutable universally unique identifier- 128bit
-
-        @Column(name = "student_id", length = 36, nullable = false, unique = true)
-        private String studentId;
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Long stu_contact_id ;
 
         @Column(name = "first_name", length = 100, nullable = false)
         private String firstName;
