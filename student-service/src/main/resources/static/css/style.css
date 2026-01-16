@@ -473,6 +473,7 @@ header::before {
     margin-bottom: 15px;
     transition: all 0.3s ease;
     border-left: 4px solid transparent;
+
 }
 
 .update-item:hover {
@@ -490,6 +491,7 @@ header::before {
     font-size: 0.75em;
     font-weight: 600;
     margin-bottom: 8px;
+
 }
 
 .update-badge.new {
@@ -903,8 +905,78 @@ header::before {
 /*
 updated
 */
-.achivements-grid{
-  width:200px;
-  height:700px;
-  margin-left:50px;
-  }
+/* Achievements Grid */
+/* Achievements Grid */
+.achivements-grid {
+    width: 100%;
+    max-width: 800px;
+    margin: 30px auto;
+    text-align: center;
+     display: flex;
+        justify-content: center;
+        align-items: center;
+}
+
+.visited-images {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.visited-images img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    animation: imageSlide 25s infinite;
+}
+
+.visited-images img:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.visited-images img:nth-child(2) {
+    animation-delay: 5s;
+}
+
+.visited-images img:nth-child(3) {
+    animation-delay: 10s;
+}
+.visited-images img:nth-child(4){
+    animation-delay:15s;
+}
+.visited-images img:nth-child(5){
+    animation-delay:20s;
+}
+
+@keyframes imageSlide {
+    0% { opacity: 0; }
+    5% { opacity: 1; }
+    45% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 0; }
+}
+.visited-images .log_image {
+    width: 500px;
+    height: 400px;
+    display: flex;
+    margin-left: 150px;
+    justify-content: center;
+    object-fit: contain;
+    border-radius: 15px;
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.visited-images .log_image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
