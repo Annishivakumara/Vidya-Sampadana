@@ -16,56 +16,49 @@ import java.util.UUID;
 @NoArgsConstructor
 public class student_contact_info {
 
-        @Id
-        @Column(length = 36, nullable = false, updatable = false)
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long stu_contact_id ;
+                @Id
+                @Column(name = "id", length = 36)
+                private String student_cont_id;
 
-        @Column(name = "first_name", length = 100, nullable = false)
-        private String firstName;
+                @Column(name = "first_name", length = 100, nullable = false)
+                private String firstName;
 
-        @Column(name = "middle_name", length = 100)
-        private String middleName;
+                @Column(name = "middle_name", length = 100)
+                private String middleName;
 
-        @Column(name = "last_name", length = 100, nullable = false)
-        private String lastName;
+                @Column(name = "last_name", length = 100, nullable = false)
+                private String lastName;
 
-        @Column(name = "full_name", length = 300)
-        private String fullName;
+                @Column(name = "full_name", length = 300)
+                private String fullName;
 
-        @Column(name = "email", length = 255, nullable = false, unique = true)
-        private String email;
+                @Column(name = "email", length = 255, nullable = false, unique = true)
+                private String email;
 
-        @Column(name = "phone", length = 20, nullable = false, unique = true)
-        private String phone;
+                @Column(name = "phone", length = 20, nullable = false, unique = true)
+                private String phone;
 
-        @Column(name = "alternate_phone", length = 20)
-        private String alternatePhone;
+                @Column(name = "alternate_phone", length = 20)
+                private String alternatePhone;
 
-        @Column(name = "date_of_birth")
-        private LocalDate dateOfBirth;
+                @Column(name = "date_of_birth")
+                private LocalDate dateOfBirth;
 
-        @Enumerated(EnumType.STRING)
-        @Column(name = "gender", length = 10)
-        private Gender gender;
+                @Enumerated(EnumType.STRING)
+                @Column(name = "gender")
+                private Gender gender;
 
-        @Column(name = "blood_group", length = 10)
-        private String bloodGroup;
+                @Column(name = "blood_group", length = 10)
+                private String bloodGroup;
 
-        @Column(name = "nationality", length = 100)
-        private String nationality;
+                @Column(name = "nationality", length = 100)
+                private String nationality;
 
-        @Column(name = "created_at", nullable = false,
-                columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-        private LocalDateTime createdAt = LocalDateTime.now();
+                @Column(name = "created_at")
+                private LocalDateTime createdAt;
 
-        @Column(name = "updated_at", nullable = false,
-                columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-        private LocalDateTime updatedAt = LocalDateTime.now();
+                @Column(name = "updated_at")
+                private LocalDateTime updatedAt;
 
-        // --- Enum for Gender ---
-        public enum Gender {
-            MALE, FEMALE, OTHER
-        }
-
+                enum Gender { MALE, FEMALE, OTHER }
 }

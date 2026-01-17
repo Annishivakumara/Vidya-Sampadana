@@ -4,14 +4,249 @@
     <mappings />
     <preferences />
   </component>
+  <component name="DBNavigator.Project.DataEditorManager">
+    <record-view-column-sorting-type value="BY_INDEX" />
+    <value-preview-text-wrapping value="false" />
+    <value-preview-pinned value="false" />
+  </component>
   <component name="DBNavigator.Project.DatabaseAssistantManager">
-    <assistants />
+    <assistants>
+      <assistant-state connection-id="f042c12e-79eb-4836-89fb-a6d224c886d9" assistant-type="SELECT_AI" default-profile-name="" selected-chat-id="" availability="UNAVAILABLE" acknowledgement="NONE">
+        <tools />
+      </assistant-state>
+      <assistant-state connection-id="f042c12e-79eb-4836-89fb-a6d224c886d9" assistant-type="PUBLIC" default-profile-name="" selected-chat-id="E60FF3A6DC2647AA8040C70340FFAD05" availability="AVAILABLE" acknowledgement="ENGAGED" selected="true">
+        <chats>
+          <chat id="675D9C75EDF64DD3B8C780EB29262BCC" title="" session-signature="" timestamp="1767667166096">
+            <messages>
+              <message id="56693857-c127-4fe3-b521-e574cfe6aa9d" type="NEUTRAL" author="USER" timestamp="1767667166096" folded="false">
+                <content><![CDATA[Hi]]></content>
+                <context provider="OPEN_AI" profile="implicit-profile-1e9398da-9a53-4e40-9125-dd0d5083b649" model="GPT_4_O" action="" interactive="true" />
+              </message>
+              <message id="cbc47310-fe55-47e7-892a-3c7438b3ba74" type="ERROR" author="SYSTEM" timestamp="1767667169351" folded="false">
+                <content><![CDATA[Failed to invoke Public LLM.
+
+Error details:
+HTTP 429: Too Many Requests (Request URL: https://api.openai.com/v1/chat/completions)
+{
+    "error": {
+        "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.",
+        "type": "insufficient_quota",
+        "param": null,
+        "code": "insufficient_quota"
+    }
+}]]></content>
+                <context provider="OPEN_AI" profile="implicit-profile-1e9398da-9a53-4e40-9125-dd0d5083b649" model="GPT_4_O" action="" interactive="true" />
+              </message>
+              <message id="4151ee91-15b4-4387-89a9-f3ac103af0b0" type="NEUTRAL" author="USER" timestamp="1767667183814" folded="false">
+                <content><![CDATA[hi]]></content>
+                <context provider="OPEN_AI" profile="implicit-profile-1e9398da-9a53-4e40-9125-dd0d5083b649" model="GPT_4_O" action="" interactive="true" />
+              </message>
+              <message id="21643483-a7ac-4f19-9564-df18d6b88a4b" type="ERROR" author="SYSTEM" timestamp="1767667186739" folded="false">
+                <content><![CDATA[Failed to invoke Public LLM.
+
+Error details:
+HTTP 429: Too Many Requests (Request URL: https://api.openai.com/v1/chat/completions)
+{
+    "error": {
+        "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.",
+        "type": "insufficient_quota",
+        "param": null,
+        "code": "insufficient_quota"
+    }
+}]]></content>
+                <context provider="OPEN_AI" profile="implicit-profile-1e9398da-9a53-4e40-9125-dd0d5083b649" model="GPT_4_O" action="" interactive="true" />
+              </message>
+              <message id="4817dd67-60d3-481e-bdb0-2b8aced10676" type="NEUTRAL" author="USER" timestamp="1767667240722" folded="false">
+                <content><![CDATA[gi]]></content>
+                <context provider="OPEN_AI" profile="implicit-profile-1e9398da-9a53-4e40-9125-dd0d5083b649" model="GPT_4_O" action="" interactive="true" />
+              </message>
+              <message id="a20cf8aa-458b-4df0-8365-fd877d309c97" type="ERROR" author="SYSTEM" timestamp="1767667242492" folded="false">
+                <content><![CDATA[Failed to invoke Public LLM.
+
+Error details:
+HTTP 429: Too Many Requests (Request URL: https://api.openai.com/v1/chat/completions)
+{
+    "error": {
+        "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.",
+        "type": "insufficient_quota",
+        "param": null,
+        "code": "insufficient_quota"
+    }
+}]]></content>
+                <context provider="OPEN_AI" profile="implicit-profile-1e9398da-9a53-4e40-9125-dd0d5083b649" model="GPT_4_O" action="" interactive="true" />
+              </message>
+            </messages>
+            <context provider="OPEN_AI" profile="implicit-profile-1e9398da-9a53-4e40-9125-dd0d5083b649" model="GPT_4_O" action="" interactive="true" />
+          </chat>
+          <chat id="E60FF3A6DC2647AA8040C70340FFAD05" title="" session-signature="" timestamp="1767667251577">
+            <messages />
+            <context provider="OPEN_AI" profile="implicit-profile-1e9398da-9a53-4e40-9125-dd0d5083b649" model="GPT_4_O" action="" interactive="true" />
+          </chat>
+        </chats>
+        <tools />
+      </assistant-state>
+    </assistants>
+    <selection-state>
+      <model-selection>
+        <assistant type="PUBLIC">
+          <selection provider-id="OPEN_AI" model-id="GPT_4_O" />
+        </assistant>
+      </model-selection>
+    </selection-state>
+  </component>
+  <component name="DBNavigator.Project.DatabaseBrowserManager">
+    <autoscroll-to-editor value="false" />
+    <autoscroll-from-editor value="true" />
+    <show-object-properties value="true" />
+    <loaded-nodes />
+  </component>
+  <component name="DBNavigator.Project.DatabaseConsoleManager">
+    <connection id="f042c12e-79eb-4836-89fb-a6d224c886d9">
+      <console name="vidya-sampadana" type="STANDARD" schema="mysql" session="Main" />
+    </connection>
+  </component>
+  <component name="DBNavigator.Project.DatabaseEditorStateManager">
+    <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="f042c12e-79eb-4836-89fb-a6d224c886d9" object-ref="consoles/vidya-sampadana" />
+    </open-files>
+  </component>
+  <component name="DBNavigator.Project.DatabasePrerequisiteManager">
+    <prerequisites />
+  </component>
+  <component name="DBNavigator.Project.DatabaseSessionManager">
+    <connection id="f042c12e-79eb-4836-89fb-a6d224c886d9" />
+  </component>
+  <component name="DBNavigator.Project.ObjectQuickFilterManager">
+    <last-used-operator value="EQUAL" />
+    <filters />
   </component>
   <component name="DBNavigator.Project.Settings">
-    <connections />
+    <connections>
+      <connection source-id="" id="f042c12e-79eb-4836-89fb-a6d224c886d9" active="true" signed="true">
+        <database>
+          <name value="vidya-sampadana" />
+          <description value="New One This is Master Branch" />
+          <database-type value="MYSQL" />
+          <config-type value="BASIC" />
+          <database-version value="8.0" />
+          <driver-source value="BUNDLED" />
+          <driver-library value="" />
+          <driver value="" />
+          <url-type value="DATABASE" />
+          <host value="localhost" />
+          <port value="3306" />
+          <database value="mysql" />
+          <tns-folder value="" />
+          <tns-profile value="" />
+          <server-type value="" />
+          <protocol value="" />
+          <url-parameters />
+          <type value="USER_PASSWORD" />
+          <user value="root" />
+          <token-type value="" />
+          <token-config-file value="" />
+          <token-profile value="" />
+          <adb-compartment-ocid value="" />
+          <adb-database-ocid value="" />
+          <azure-token-database-id-uri value="" />
+          <azure-token-tenant-id value="" />
+          <azure-token-client-id value="" />
+          <azure-token-client-certificate-file value="" />
+          <session-user value="root@localhost" />
+        </database>
+        <properties>
+          <auto-commit value="false" />
+        </properties>
+        <ssh-settings>
+          <active value="false" />
+          <proxy-host value="" />
+          <proxy-port value="22" />
+          <proxy-user value="" />
+          <auth-type value="PASSWORD" />
+          <key-file value="" />
+        </ssh-settings>
+        <ssl-settings>
+          <active value="false" />
+          <certificate-authority-file value="" />
+          <client-certificate-file value="" />
+          <client-key-file value="" />
+        </ssl-settings>
+        <details>
+          <charset value="UTF-8" />
+          <session-management value="true" />
+          <ddl-file-binding value="true" />
+          <database-logging value="true" />
+          <connect-automatically value="true" />
+          <restore-workspace value="true" />
+          <restore-workspace-deep value="false" />
+          <environment-type value="default" />
+          <connectivity-timeout value="30" />
+          <idle-time-to-disconnect value="30" />
+          <idle-time-to-disconnect-pool value="5" />
+          <credential-expiry-time value="10" />
+          <max-connection-pool-size value="7" />
+          <alternative-statement-delimiter value="" />
+        </details>
+        <debugger>
+          <compile-dependencies value="true" />
+          <tcp-host-address value="" />
+          <tcp-port-from value="4000" />
+          <tcp-port-to value="4999" />
+          <jdwp-tunnel-type value="NONE" />
+          <debugger-type value="ASK" />
+          <reverse-ssh-tunnel>
+            <host value="" />
+            <port value="22" />
+            <bind-host value="127.0.0.1" />
+            <bind-port value="0" />
+            <auth-type value="PASSWORD" />
+            <user value="" />
+            <key-file value="" />
+          </reverse-ssh-tunnel>
+        </debugger>
+        <object-filters hide-empty-schemas="false" hide-pseudo-columns="false" hide-audit-columns="false">
+          <object-filters />
+          <object-type-filter use-master-settings="true">
+            <object-type name="SCHEMA" enabled="true" />
+            <object-type name="USER" enabled="true" />
+            <object-type name="ROLE" enabled="true" />
+            <object-type name="PRIVILEGE" enabled="true" />
+            <object-type name="CHARSET" enabled="true" />
+            <object-type name="TABLE" enabled="true" />
+            <object-type name="VIEW" enabled="true" />
+            <object-type name="JSON_VIEW" enabled="true" />
+            <object-type name="MATERIALIZED_VIEW" enabled="true" />
+            <object-type name="NESTED_TABLE" enabled="true" />
+            <object-type name="COLUMN" enabled="true" />
+            <object-type name="INDEX" enabled="true" />
+            <object-type name="CONSTRAINT" enabled="true" />
+            <object-type name="DATASET_TRIGGER" enabled="true" />
+            <object-type name="DATABASE_TRIGGER" enabled="true" />
+            <object-type name="SYNONYM" enabled="true" />
+            <object-type name="SEQUENCE" enabled="true" />
+            <object-type name="PROCEDURE" enabled="true" />
+            <object-type name="FUNCTION" enabled="true" />
+            <object-type name="PACKAGE" enabled="true" />
+            <object-type name="TYPE" enabled="true" />
+            <object-type name="TYPE_ATTRIBUTE" enabled="true" />
+            <object-type name="ARGUMENT" enabled="true" />
+            <object-type name="JAVA_CLASS" enabled="true" />
+            <object-type name="JAVA_FIELD" enabled="true" />
+            <object-type name="JAVA_METHOD" enabled="true" />
+            <object-type name="JAVA_RESOURCE" enabled="true" />
+            <object-type name="DIMENSION" enabled="true" />
+            <object-type name="CLUSTER" enabled="true" />
+            <object-type name="DBLINK" enabled="true" />
+            <object-type name="CREDENTIAL" enabled="true" />
+            <object-type name="AI_PROFILE" enabled="true" />
+            <object-type name="AI_MODEL" enabled="true" />
+          </object-type-filter>
+        </object-filters>
+      </connection>
+    </connections>
     <browser-settings>
       <general>
         <display-mode value="TABBED" />
@@ -54,6 +289,7 @@
           <object-type name="DBLINK" enabled="true" />
           <object-type name="CREDENTIAL" enabled="true" />
           <object-type name="AI_PROFILE" enabled="true" />
+          <object-type name="AI_MODEL" enabled="true" />
         </object-type-filter>
       </filters>
       <sorting>
@@ -361,6 +597,11 @@
         <debug-execution-timeout value="600" />
         <parameter-history-size value="10" />
       </method-execution>
+      <method-execution>
+        <execution-timeout value="30" />
+        <debug-execution-timeout value="600" />
+        <parameter-history-size value="10" />
+      </method-execution>
     </execution-engine-settings>
     <operation-settings>
       <transactions>
@@ -409,8 +650,13 @@
     </ddl-file-settings>
     <assistant-settings>
       <credential-settings>
-        <credentials />
+        <credentials>
+          <credential id="1e9398da-9a53-4e40-9125-dd0d5083b649" name="Open AI" user="" provider="OPEN_AI" />
+        </credentials>
       </credential-settings>
+      <profile-settings>
+        <profiles />
+      </profile-settings>
     </assistant-settings>
     <general-settings>
       <regional-settings>

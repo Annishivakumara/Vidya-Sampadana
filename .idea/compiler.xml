@@ -2,7 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-      <profile name="Annotation profile for analytics-service" enabled="true">
+      <profile name="Annotation profile for notification-service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -11,6 +11,7 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar" />
         </processorPath>
         <module name="analytics-service" />
+        <module name="notification-service" />
         <module name="activity-logging-service" />
       </profile>
       <profile name="Annotation profile for student-service" enabled="true">
@@ -37,7 +38,6 @@
         <module name="chat-service" />
         <module name="user-service" />
         <module name="session-service" />
-        <module name="notification-service" />
         <module name="document-service" />
       </profile>
     </annotationProcessing>
