@@ -1,5 +1,6 @@
 package com.vidyasampadana.student_service.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,19 +8,19 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.Year;
-import java.util.UUID;
+
 
 @Entity
 @Data
 @Table(name = "student_academic_profile")
 @NoArgsConstructor
 @AllArgsConstructor
-public class student_academic_profile {
+public class StudentAcademicProfile  {
+
     @Id
-    @Column(name = "id", length = 36)
-    private String student_academic_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long  student_academic_id;
+
 
     @Column(name = "school_name", length = 255)
     private String schoolName;
@@ -32,7 +33,7 @@ public class student_academic_profile {
     private String currentClass;
 
     @Column(name = "current_academic_year")
-    private Year currentAcademicYear;
+    private String currentAcademicYear;
 
     @Column(name = "current_score_percentage", precision = 5, scale = 2)
     private BigDecimal currentScorePercentage;
@@ -44,18 +45,10 @@ public class student_academic_profile {
     @Column(name = "specialization", length = 100)
     private String specialization;
 
-    @Column(name = "admission_number", length = 50)
-    private String admissionNumber;
 
     @Column(name = "admission_date")
     private LocalDate admissionDate;
 
-    @Column(name = "created_at")
-    private LocalDateTime createdAt;
-
-    @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
-
-    enum SchoolBoard { CBSE, ICSE, STATE, IB, IGCSE, OTHER }
-    enum AcademicStream { SCIENCE, COMMERCE, ARTS, GENERAL, VOCATIONAL }
+    public enum SchoolBoard { CBSE, ICSE, STATE, IB, IGCSE, OTHER }
+    public enum AcademicStream { SCIENCE, COMMERCE, ARTS, GENERALL }
 }

@@ -980,3 +980,90 @@ updated
     transform: scale(1.05);
     box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
+
+/* ================= MOBILE NAV FIX ONLY ================= */
+
+.nav-toggle {
+     display: none;
+        background: none;
+        border: none;
+        font-size: 26px;
+        color: gold;
+        cursor: pointer;
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+
+    .main-nav {
+        position: relative;
+    }
+
+    .nav-toggle {
+        display: block;
+        padding: 12px 16px;
+    }
+
+    .main-nav ul {
+         display: none;
+           flex-direction: column;
+           width: 100%;
+           background-color: #FFD700;
+    }
+
+    .main-nav ul.show {
+        display: flex;
+    }
+
+    .main-nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .main-nav ul li a {
+        display: block;
+        padding: 14px;
+    }
+}
+
+/* ================= END MOBILE NAV FIX ================= */
+
+/* 1. Make the navigation list a flex container */
+.main-nav ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    width: 100%; /* Ensure the list spans the full width */
+    padding: 0 20px;
+}
+
+/* 2. Push ONLY the profile item to the far right */
+.profile-nav-item {
+    margin-left: auto;
+}
+
+/* 3. Style the circle */
+.profile-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    border: 2px solid #007bff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.profile-circle i {
+    color: #007bff;
+    font-size: 1.2rem;
+}
+
+/* Hover effects */
+.profile-link:hover .profile-circle {
+    background-color: #007bff;
+}
+.profile-link:hover .profile-circle i {
+    color: #fff;
+}

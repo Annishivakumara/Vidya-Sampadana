@@ -55,3 +55,14 @@ text
 ... and more
 
 
+POST    /api/v1/students                    # Create
+GET     /api/v1/students/{id}              # Get by ID (long)
+GET     /api/v1/students/user/{userId}     # Get by userId
+GET     /api/v1/students                   # Paginated list (?page=0&size=10)
+GET     /api/v1/students/list              # Summary list
+PUT     /api/v1/students/{id}              # Update
+DELETE  /api/v1/students/{id}              # Delete by ID
+DELETE  /api/v1/students/user/{userId}     # Delete by userId
+GET     /api/v1/students/{id}/profile-summary
+GET     /api/v1/students/user/{userId}/exists
+

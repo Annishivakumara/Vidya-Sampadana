@@ -7,12 +7,11 @@ import com.vidyasampadana.student_service.exception.DuplicateStudentException;
 import com.vidyasampadana.student_service.exception.StudentNotFoundException;
 import com.vidyasampadana.student_service.mapper.StudentMapper;
 import com.vidyasampadana.student_service.repository.StudentRepository;
-import lombok.Data;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.awt.print.Pageable;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 
@@ -30,7 +29,7 @@ public class StudentServiceImli implements StudentService{
 
     @Override
     public studentResponsedto createStudent(studentRequestDTO requestDTO) {
-        if(studentRepository.existsByUserId(requestDTO.getStudentId())){
+        if(studentRepository.existsByStudentId(requestDTO.getStudentId())){
             throw new DuplicateStudentException("Student With Same Id Already Exists"+requestDTO.getStudentId());
         }
         Students students=studentMapper.toEntity(requestDTO);
@@ -39,45 +38,41 @@ public class StudentServiceImli implements StudentService{
     }
 
     @Override
-    public studentResponsedto getStudentById(long id) {
-        if(studentRepository.existsById(id)){
-            throw new StudentNotFoundException("Student With That id Not Found"+id);
-        }
-   return null;
+    @Transactional(readOnly = true)
+    public List<studentResponsedto> getAllStudents( ) {
+       return    studentRepository.findAll()
+                .stream()
+                .map(studentMapper::toDTO)
+                .collect(Collectors.toList());
     }
 
+
     @Override
+    @Transactional(readOnly = true)
     public studentResponsedto getStudentByUserId(String userId) {
-        return null;
-    }
-
-    @Override
-    public Page<studentResponsedto> getAllStudents(Pageable pageable) {
-        return null;
-    }
-
-    @Override
-    public studentResponsedto updateStudent(long id, studentRequestDTO request) {
-        return null;
+       Students students= studentRepository.findByStudentId(userId)
+               .orElseThrow(()-> new StudentNotFoundException("Student Not Found "+userId));
+        return  studentMapper.toDTO(students);
     }
 
     @Override
     public studentResponsedto updateStudentByUserId(String userId, studentRequestDTO requestDTO) {
-        return null;
-    }
+            Students ExistsStudent= studentRepository.findByStudentId(userId).orElseThrow(()-> new StudentNotFoundException("Student With  That Id Not Found "+userId));
 
-    @Override
-    public void deleteStudent(long id) {
+            if(!ExistsStudent.getStudentId().equals(requestDTO.getStudentId()) && studentRepository.existsByStudentId(requestDTO.getStudentId())){
+                    throw new DuplicateStudentException("Student Id Not Found "+requestDTO.getStudentId());
+            }
+            studentMapper.updateStudentFromDto(requestDTO , ExistsStudent);
+            Students students= studentRepository.save(ExistsStudent);
+            return  studentMapper.toDTO(students);
+        }
 
-    }
 
     @Override
     public void deleteStudentByUserId(String userId) {
-
+            Students students= studentRepository.findByStudentId(userId)
+                    .orElseThrow(()->  new StudentNotFoundException("Student With User id Not Found "+userId));
+             studentRepository.delete(students);
     }
 
-    @Override
-    public Boolean checkStudentExists(String userId) {
-        return null;
-    }
 }

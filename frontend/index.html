@@ -27,20 +27,29 @@
 </header>
 
 <nav class="main-nav">
+    <button class="nav-toggle">&#9776;</button>
     <ul>
         <li><a href="./index.html" class="active"><i class="fas fa-home"></i> HOME</a></li>
-        <li><a href="../student-service/src/main/resources/static/about_us.html"><i class="fas fa-info-circle"></i> ABOUT US</a></li>
-        <li><a href="../student-service/src/main/resources/static/updates.html"><i class="fas fa-bell"></i> UPDATES</a></li>
-        <li><a href="../student-service/src/main/resources/static/scholarship.html"><i class="fas fa-award"></i> SCHOLARSHIP</a></li>
-        <li><a href="../student-service/src/main/resources/static/student_corner.html"><i class="fas fa-users"></i> STUDENT CORNER</a></li>
-        <li><a href="../student-service/src/main/resources/static/vs_library.html"><i class="fas fa-book"></i> VS LIBRARY</a></li>
-        <li><a href="../student-service/src/main/resources/static/contact.html"><i class="fas fa-envelope"></i> CONTACT US</a></li>
+        <li><a href="../frontend/kcet_updates.html"><i class="fas fa-bell"></i> KCET UPDATES</a></li>
+        <li><a href="../frontend/neet_updates.html"><i class="fas fa-bell"></i> NEET UPDATES </a></li>
+        <li><a href="../frontend/scholarship.html"><i class="fas fa-award"></i> SCHOLARSHIP</a></li>
+<!--        <li><a href="../frontend/student_corner.html"><i class="fas fa-users"></i> STUDENT CORNER</a></li>-->
+        <li><a href="../frontend/vs_library.html"><i class="fas fa-book"></i> VS LIBRARY</a></li>
+        <li><a href="../frontend/about_us.html"><i class="fas fa-info-circle"></i> ABOUT US</a></li>
+        <li><a href="../frontend/contact.html"><i class="fas fa-envelope"></i> CONTACT US</a></li>
+
+        <li class="profile-nav-item">
+            <a href="../frontend/student_dashboard.html" class="profile-link">
+                <div class="profile-circle">
+                    <i class="fas fa-user"></i></div>
+            </a>
+        </li>
     </ul>
 </nav>
 
 <div class="date-display">
     <i class="far fa-calendar-alt"></i>
-    <marquee behavior="top" direction="left" id="currentDate"> • KCET 2026 exams are tentatively scheduled for April 23 and 24, 2026</marquee>
+    <marquee behavior="top" direction="right" >• KCET 2026 exams are tentatively scheduled for April 23 and 24, 2026  </marquee>
     <span class="live-indicator">
             <span class="pulse-dot"></span>
             Up-comming

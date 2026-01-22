@@ -1,18 +1,22 @@
 package com.vidyasampadana.student_service.dto;
 
-import com.vidyasampadana.student_service.entity.students;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class studentResponsedto {
-    private String id;
-    private String userId;
-    private String examType;
-    private Integer currentYear;
-    private students.StudentStatus status;
-    private Integer profileCompletionPercentage;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+    private long id;
+    private String studentId;
+
+    // Nested relationship summaries
+    private StudentContactInfoDTO contactInfoDTO;
+    private StudentParentInfoDTO parentInfoDTO;
+    private StudentAcademicProfileDTO academicProfileDTO;
+    private StudentAddressInfoDTO studentAddressInfoDTO;
+    private StudentExamScoresDTO examScoresDTO;
 }

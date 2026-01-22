@@ -1,23 +1,25 @@
 package com.vidyasampadana.student_service.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Entity
 @Data
 @Table(name = "student_exam_scores" )
 @NoArgsConstructor
 @AllArgsConstructor
-public class student_exam_scores {
+public class StudentExamScores {
+
     @Id
-    @Column(name = "id", length = 36)
-    private String student_exam_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long student_exam_id;
 
     @Column(name = "exam_name", length = 255, nullable = false)
     private String examName;
@@ -56,32 +58,29 @@ public class student_exam_scores {
     @Column(name = "subject_3_out_of", precision = 5, scale = 2)
     private BigDecimal subject3OutOf;
 
-    @Column(name = "total_score", precision = 6, scale = 2)
+    @Column(name = "total_score", precision = 6, scale = 2, nullable = false)
     private BigDecimal totalScore;
 
     @Column(name = "total_marks", precision = 6, scale = 2)
     private BigDecimal totalMarks;
 
-    @Column(name = "percentage", precision = 5, scale = 2)
+    @Column(name = "percentage")
     private BigDecimal percentage;
 
-    @Column(name = "rank")
-    private Integer rank;
+    //“Before saving or updating this entity, run this method
+    @PrePersist
+    @PreUpdate
+    private void calculatePercentage() {
+        if (totalScore != null && totalMarks != null && totalMarks.compareTo(BigDecimal.ZERO) > 0) {
+            this.percentage = totalScore
+                    .multiply(BigDecimal.valueOf(100))
+                    .divide(totalMarks, 2, RoundingMode.HALF_UP);
+        }
+    }
 
-    @Column(name = "all_india_rank")
-    private Integer allIndiaRank;
+    @Column(name = "examRank")
+    private Integer examRank;
 
-    @Column(name = "accuracy_percentage", precision = 5, scale = 2)
-    private BigDecimal accuracyPercentage;
 
-    @Column(name = "time_spent_minutes")
-    private Integer timeSpentMinutes;
-
-    @Column(name = "created_at")
-    private LocalDateTime createdAt;
-
-    @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
-
-    enum ExamType { MOCK, MAINS, ADVANCED, ACTUAL, OTHER }
+    public enum ExamType { MOCK, MAINS, ADVANCED, ACTUAL, OTHER }
 }

@@ -356,4 +356,12 @@ function addScrollProgress() {
     });
 }
 
+
+const toggleBtn = document.querySelector(".nav-toggle");
+const navMenu = document.querySelector(".main-nav ul");
+
+toggleBtn.addEventListener("click", () => {
+    navMenu.classList.toggle("show");
+});
+
 addScrollProgress();
