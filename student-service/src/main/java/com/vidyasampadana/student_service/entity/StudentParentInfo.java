@@ -14,8 +14,9 @@ import lombok.NoArgsConstructor;
 public class StudentParentInfo {
 
         @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long student_parent_id;
+        @GeneratedValue(strategy = GenerationType.AUTO)
+        @Column(name = "parent_id") // <-- match DB column
+        private Long parentId;
 
         @Embedded
         private StudentFatherInfo fatherInfo;

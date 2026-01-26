@@ -10,7 +10,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StudentParentInfoDTO {
-    private String id;
     private StudentFatherInfoDTO fatherInfo;
     private StudentMotherInfoDTO motherInfo;
     private StudentGuardianInfoDTO guardianInfo;

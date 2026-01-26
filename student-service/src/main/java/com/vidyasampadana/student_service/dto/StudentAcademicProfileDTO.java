@@ -12,7 +12,6 @@ import java.time.Year;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StudentAcademicProfileDTO {
-    private String id;
     private String schoolName;
     private String schoolBoard;
     private String currentClass;
@@ -20,6 +19,5 @@ public class StudentAcademicProfileDTO {
     private BigDecimal currentScorePercentage;
     private String stream;
     private String specialization;
-    private String admissionNumber;
     private LocalDate admissionDate;
 }

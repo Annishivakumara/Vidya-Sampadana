@@ -1,7 +1,7 @@
 package com.vidyasampadana.student_service.service;
 
 import com.vidyasampadana.student_service.dto.studentRequestDTO;
-import com.vidyasampadana.student_service.dto.studentResponsedto;
+import com.vidyasampadana.student_service.dto.StudentResponseDTO;
 import com.vidyasampadana.student_service.entity.Students;
 import com.vidyasampadana.student_service.exception.DuplicateStudentException;
 import com.vidyasampadana.student_service.exception.StudentNotFoundException;
@@ -27,8 +27,9 @@ public class StudentServiceImli implements StudentService{
         this.studentMapper = studentMapper;
     }
 
+
     @Override
-    public studentResponsedto createStudent(studentRequestDTO requestDTO) {
+    public StudentResponseDTO createStudent(studentRequestDTO requestDTO) {
         if(studentRepository.existsByStudentId(requestDTO.getStudentId())){
             throw new DuplicateStudentException("Student With Same Id Already Exists"+requestDTO.getStudentId());
         }
@@ -39,7 +40,7 @@ public class StudentServiceImli implements StudentService{
 
     @Override
     @Transactional(readOnly = true)
-    public List<studentResponsedto> getAllStudents( ) {
+    public List<StudentResponseDTO> getAllStudents( ) {
        return    studentRepository.findAll()
                 .stream()
                 .map(studentMapper::toDTO)
@@ -49,15 +50,15 @@ public class StudentServiceImli implements StudentService{
 
     @Override
     @Transactional(readOnly = true)
-    public studentResponsedto getStudentByUserId(String userId) {
+    public StudentResponseDTO getStudentByStudentId(String userId) {
        Students students= studentRepository.findByStudentId(userId)
                .orElseThrow(()-> new StudentNotFoundException("Student Not Found "+userId));
         return  studentMapper.toDTO(students);
     }
 
     @Override
-    public studentResponsedto updateStudentByUserId(String userId, studentRequestDTO requestDTO) {
-            Students ExistsStudent= studentRepository.findByStudentId(userId).orElseThrow(()-> new StudentNotFoundException("Student With  That Id Not Found "+userId));
+    public StudentResponseDTO updateStudentByStudentId(String studentId, studentRequestDTO requestDTO) {
+            Students ExistsStudent= studentRepository.findByStudentId(studentId).orElseThrow(()-> new StudentNotFoundException("Student With  That Id Not Found "+studentId));
 
             if(!ExistsStudent.getStudentId().equals(requestDTO.getStudentId()) && studentRepository.existsByStudentId(requestDTO.getStudentId())){
                     throw new DuplicateStudentException("Student Id Not Found "+requestDTO.getStudentId());
@@ -69,9 +70,9 @@ public class StudentServiceImli implements StudentService{
 
 
     @Override
-    public void deleteStudentByUserId(String userId) {
-            Students students= studentRepository.findByStudentId(userId)
-                    .orElseThrow(()->  new StudentNotFoundException("Student With User id Not Found "+userId));
+    public void deleteStudentByStudentId(String studentId) {
+            Students students= studentRepository.findByStudentId(studentId)
+                    .orElseThrow(()->  new StudentNotFoundException("Student With User id Not Found "+studentId));
              studentRepository.delete(students);
     }
 

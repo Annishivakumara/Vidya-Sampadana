@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StudentAddressInfoDTO {
-    private String id;
     private String addressType;
     private String streetAddress;
     private String city;

@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StudentContactInfoDTO {
-    private long id;
     private String firstName;
     private String middleName;
     private String lastName;

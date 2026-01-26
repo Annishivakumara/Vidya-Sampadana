@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StudentFatherInfoDTO {
-
     private String name;
     private String phone;
     private String email;
@@ -19,5 +18,4 @@ public class StudentFatherInfoDTO {
     private Integer age;
     private String qualification;
     private Boolean isAlive;
-
 }

@@ -18,8 +18,9 @@ import java.time.LocalDate;
 public class StudentExamScores {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long student_exam_id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "exam_id") // <-- match DB column
+    private Long examId;
 
     @Column(name = "exam_name", length = 255, nullable = false)
     private String examName;

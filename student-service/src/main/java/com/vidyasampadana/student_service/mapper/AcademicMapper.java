@@ -8,7 +8,9 @@ import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring")
 public interface AcademicMapper {
+    @Mapping(target = "studentAcaId" , ignore = true)
     StudentAcademicProfile toEntity(StudentAcademicProfileDTO dto);
     StudentAcademicProfileDTO toDto(StudentAcademicProfile entity);
+    @Mapping(target = "studentAcaId" , ignore = true)
     void  updateFromDto(StudentAcademicProfileDTO dto, @MappingTarget StudentAcademicProfile entity);
 }

@@ -4,9 +4,16 @@ import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class studentRequestDTO {
-        private String studentId;
- }
+@Data
+public class studentRequestDTO{
+    private Long id;
+    private String studentId;
+    // Nested relationship summaries
+    private StudentContactInfoDTO contactInfoDTO;
+    private StudentParentInfoDTO parentInfoDTO;
+    private StudentAcademicProfileDTO academicProfileDTO;
+    private StudentAddressInfoDTO studentAddressInfoDTO;
+    private StudentExamScoresDTO examScoresDTO;
+}

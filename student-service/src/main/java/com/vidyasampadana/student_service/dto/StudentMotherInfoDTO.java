@@ -18,5 +18,4 @@ public class StudentMotherInfoDTO {
     private Integer age;
     private String qualification;
     private Boolean isAlive;
-
 }

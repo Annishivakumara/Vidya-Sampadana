@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StudentExamScoresDTO {
-    private String id;
     private String examName;
     private LocalDate examDate;
     private String examType;

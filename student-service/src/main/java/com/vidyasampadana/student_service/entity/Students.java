@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Date;
+
 
 @Data
 @Entity
@@ -16,37 +18,33 @@ import lombok.NoArgsConstructor;
 public class Students {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id; // Database primary key
 
     @Column(name = "student_id", length = 36, nullable = false, unique = true)
-    private String studentId;
+    private String studentId;  // Business identifier (UUID or roll number)
 
-    // Injected One-to-One Relationships
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "studentContId")
+    @JoinColumn(name = "student_cont_id", referencedColumnName = "student_cont_id")
     private StudentContactInfo contactInfo;
 
 
-
     @OneToOne( cascade = CascadeType.ALL)
-    @JoinColumn(name = "student_academic_id")
+    @JoinColumn(name ="academic_id", referencedColumnName="academic_id")
     private StudentAcademicProfile academicProfile;
 
 
     @OneToOne( cascade = CascadeType.ALL)
-    @JoinColumn(name = "student_parent_id")
+    @JoinColumn(name = "parent_id" ,referencedColumnName = "parent_id")
     private StudentParentInfo studentParentInfo;
 
 
     @OneToOne( cascade = CascadeType.ALL)
-    @JoinColumn(name = "student_add_id")
+    @JoinColumn(name = "address_id", referencedColumnName = "address_id")
     private StudentAddressInfo studentAddressInfo;
 
     @OneToOne( cascade = CascadeType.ALL)
-    @JoinColumn(name = "student_exam_id")
+    @JoinColumn(name = "exam_id", referencedColumnName = "exam_id")
     private  StudentExamScores studentExamScores;
-
-
 
 }

@@ -17,9 +17,9 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class StudentAcademicProfile  {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long  student_academic_id;
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "academic_id") // <-- match DB column
+    private Long studentAcaId;
 
 
     @Column(name = "school_name", length = 255)
@@ -50,5 +50,5 @@ public class StudentAcademicProfile  {
     private LocalDate admissionDate;
 
     public enum SchoolBoard { CBSE, ICSE, STATE, IB, IGCSE, OTHER }
-    public enum AcademicStream { SCIENCE, COMMERCE, ARTS, GENERALL }
+    public enum AcademicStream { SCIENCE, COMMERCE, ARTS, GENERAL }
 }

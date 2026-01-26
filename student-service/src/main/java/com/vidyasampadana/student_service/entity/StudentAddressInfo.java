@@ -14,8 +14,9 @@ import lombok.NoArgsConstructor;
 public class StudentAddressInfo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long  student_add_id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "address_id") // <-- match DB column
+    private Long  addressId;
 
 
     @Enumerated(EnumType.STRING)
