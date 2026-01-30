@@ -95,29 +95,39 @@ HTTP 429: Too Many Requests (Request URL: https://api.openai.com/v1/chat/complet
     </selection-state>
   </component>
   <component name="DBNavigator.Project.DatabaseBrowserManager">
-    <autoscroll-to-editor value="false" />
+    <autoscroll-to-editor value="true" />
     <autoscroll-from-editor value="true" />
-    <show-object-properties value="true" />
+    <show-object-properties value="false" />
     <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="f042c12e-79eb-4836-89fb-a6d224c886d9">
-      <console name="vidya-sampadana" type="STANDARD" schema="mysql" session="Main" />
+      <console name="vidya-sampadana" type="STANDARD" schema="vidya_sampadana_db" session="Main"><![CDATA[select  * from students;
+select  * from student_academic_profile;
+select * from student_address_info;
+select * from student_contact_info;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="f042c12e-79eb-4836-89fb-a6d224c886d9" object-ref="consoles/vidya-sampadana" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabasePrerequisiteManager">
     <prerequisites />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="f042c12e-79eb-4836-89fb-a6d224c886d9" />
+  </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="f042c12e-79eb-4836-89fb-a6d224c886d9" dataset="vidya_sampadana_db.student_contact_info" active-filter-id="" />
+    <filter-actions connection-id="f042c12e-79eb-4836-89fb-a6d224c886d9" dataset="vidya_sampadana_db.student_parent_info" active-filter-id="" />
+    <filter-actions connection-id="f042c12e-79eb-4836-89fb-a6d224c886d9" dataset="vidya_sampadana_db.students" active-filter-id="" />
+    <filter-actions connection-id="f042c12e-79eb-4836-89fb-a6d224c886d9" dataset="vidya_sampadana_db.student_academic_profile" active-filter-id="" />
+  </component>
+  <component name="DBNavigator.Project.ExecutionManager">
+    <retain-sticky-names value="false" />
   </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />
@@ -249,7 +259,7 @@ HTTP 429: Too Many Requests (Request URL: https://api.openai.com/v1/chat/complet
     </connections>
     <browser-settings>
       <general>
-        <display-mode value="TABBED" />
+        <display-mode value="SIMPLE" />
         <navigation-history-size value="100" />
         <show-object-details value="false" />
         <enable-sticky-paths value="true" />
@@ -681,5 +691,9 @@ HTTP 429: Too Many Requests (Request URL: https://api.openai.com/v1/chat/complet
         </visibility-settings>
       </environment>
     </general-settings>
+  </component>
+  <component name="DBNavigator.Project.StatementExecutionManager">
+    <execution-variables />
+    <execution-variable-types />
   </component>
 </project>

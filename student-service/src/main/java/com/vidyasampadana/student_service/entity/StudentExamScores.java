@@ -68,6 +68,7 @@ public class StudentExamScores {
     @Column(name = "percentage")
     private BigDecimal percentage;
 
+
     //“Before saving or updating this entity, run this method
     @PrePersist
     @PreUpdate

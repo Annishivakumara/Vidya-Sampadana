@@ -1,13 +1,259 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Student Dashboard </title>
+    <title>Add Student</title>
+    <style>
+        body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+h1, h2, h3 {
+  color: #2c3e50;
+}
+
+form {
+  margin-top: 20px;
+}
+
+input {
+  margin: 5px 0;
+  padding: 8px;
+  width: 300px;
+}
+
+button {
+  margin-top: 15px;
+  padding: 10px 15px;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #45a049;
+}
+
+#response {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+    </style>
 </head>
 <body>
+<h1>Add Student</h1>
 
+<form id="studentForm">
+    <h2>Basic Info</h2>
+    <input type="text" name="id" placeholder="ID" required>
+    <input type="text" name="studentId" placeholder="Student ID" required>
+
+    <h2>Contact Info</h2>
+    <input type="text" name="firstName" placeholder="First Name" required>
+    <input type="text" name="middleName" placeholder="Middle Name">
+    <input type="text" name="lastName" placeholder="Last Name" required>
+    <input type="text" name="fullName" placeholder="Full Name">
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="text" name="phone" placeholder="Phone" required>
+    <input type="text" name="alternatePhone" placeholder="Alternate Phone">
+    <input type="date" name="dateOfBirth" placeholder="Date of Birth">
+    <input type="text" name="gender" placeholder="Gender">
+    <input type="text" name="bloodGroup" placeholder="Blood Group">
+    <input type="text" name="nationality" placeholder="Nationality">
+
+    <h2>Parent Info</h2>
+    <h3>Father</h3>
+    <input type="text" name="fatherName" placeholder="Father Name">
+    <input type="text" name="fatherPhone" placeholder="Father Phone">
+    <input type="email" name="fatherEmail" placeholder="Father Email">
+    <input type="text" name="fatherOccupation" placeholder="Father Occupation">
+    <input type="text" name="fatherCompany" placeholder="Father Company">
+    <input type="text" name="fatherDesignation" placeholder="Father Designation">
+    <input type="number" name="fatherAge" placeholder="Father Age">
+    <input type="text" name="fatherQualification" placeholder="Father Qualification">
+
+    <h3>Mother</h3>
+    <input type="text" name="motherName" placeholder="Mother Name">
+    <input type="text" name="motherPhone" placeholder="Mother Phone">
+    <input type="email" name="motherEmail" placeholder="Mother Email">
+    <input type="text" name="motherOccupation" placeholder="Mother Occupation">
+    <input type="text" name="motherCompany" placeholder="Mother Company">
+    <input type="text" name="motherDesignation" placeholder="Mother Designation">
+    <input type="number" name="motherAge" placeholder="Mother Age">
+    <input type="text" name="motherQualification" placeholder="Mother Qualification">
+
+    <h3>Guardian</h3>
+    <input type="text" name="guardianName" placeholder="Guardian Name">
+    <input type="text" name="guardianPhone" placeholder="Guardian Phone">
+    <input type="email" name="guardianEmail" placeholder="Guardian Email">
+    <input type="text" name="guardianRelationship" placeholder="Guardian Relationship">
+    <input type="text" name="guardianOccupation" placeholder="Guardian Occupation">
+    <input type="text" name="guardianCompany" placeholder="Guardian Company">
+    <input type="number" name="guardianAge" placeholder="Guardian Age">
+
+    <h2>Academic Profile</h2>
+    <input type="text" name="schoolName" placeholder="School Name">
+    <input type="text" name="schoolBoard" placeholder="School Board">
+    <input type="text" name="currentClass" placeholder="Current Class">
+    <input type="text" name="currentAcademicYear" placeholder="Academic Year">
+    <input type="number" step="0.01" name="currentScorePercentage" placeholder="Score %">
+    <input type="text" name="stream" placeholder="Stream">
+    <input type="text" name="specialization" placeholder="Specialization">
+    <input type="date" name="admissionDate" placeholder="Admission Date">
+
+    <h2>Address</h2>
+    <input type="text" name="addressType" placeholder="Address Type">
+    <input type="text" name="streetAddress" placeholder="Street Address">
+    <input type="text" name="city" placeholder="City">
+    <input type="text" name="state" placeholder="State">
+    <input type="text" name="postalCode" placeholder="Postal Code">
+    <input type="text" name="country" placeholder="Country">
+
+    <h2>Exam Scores</h2>
+    <input type="text" name="examName" placeholder="Exam Name">
+    <input type="date" name="examDate" placeholder="Exam Date">
+    <input type="text" name="examType" placeholder="Exam Type">
+    <input type="text" name="subject1Name" placeholder="Subject 1 Name">
+    <input type="number" name="subject1Score" placeholder="Subject 1 Score">
+    <input type="number" name="subject1OutOf" placeholder="Subject 1 Out Of">
+    <input type="text" name="subject2Name" placeholder="Subject 2 Name">
+    <input type="number" name="subject2Score" placeholder="Subject 2 Score">
+    <input type="number" name="subject2OutOf" placeholder="Subject 2 Out Of">
+    <input type="text" name="subject3Name" placeholder="Subject 3 Name">
+    <input type="number" name="subject3Score" placeholder="Subject 3 Score">
+    <input type="number" name="subject3OutOf" placeholder="Subject 3 Out Of">
+    <input type="number" name="totalScore" placeholder="Total Score">
+    <input type="number" name="totalMarks" placeholder="Total Marks">
+    <input type="number" step="0.01" name="percentage" placeholder="Percentage">
+    <input type="number" name="examRank" placeholder="Exam Rank">
+
+    <button type="submit">Submit</button>
+</form>
+
+<div id="response"></div>
+
+<script>
+    document.getElementById("studentForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const form = e.target;
+
+  // Build the payload exactly like your DTO structure
+  const payload = {
+    id: parseInt(form.id.value),
+    studentId: form.studentId.value,
+    contactInfoDTO: {
+      firstName: form.firstName.value,
+      middleName: form.middleName.value,
+      lastName: form.lastName.value,
+      fullName: form.fullName.value,
+      email: form.email.value,
+      phone: form.phone.value,
+      alternatePhone: form.alternatePhone.value,
+      dateOfBirth: form.dateOfBirth.value,
+      gender: form.gender.value,
+      bloodGroup: form.bloodGroup.value,
+      nationality: form.nationality.value
+    },
+    parentInfoDTO: {
+      fatherInfo: {
+        name: form.fatherName.value,
+        phone: form.fatherPhone.value,
+        email: form.fatherEmail.value,
+        occupation: form.fatherOccupation.value,
+        company: form.fatherCompany.value,
+        designation: form.fatherDesignation.value,
+        age: parseInt(form.fatherAge.value),
+        qualification: form.fatherQualification.value,
+        isAlive: true
+      },
+      motherInfo: {
+        name: form.motherName.value,
+        phone: form.motherPhone.value,
+        email: form.motherEmail.value,
+        occupation: form.motherOccupation.value,
+        company: form.motherCompany.value,
+        designation: form.motherDesignation.value,
+        age: parseInt(form.motherAge.value),
+        qualification: form.motherQualification.value,
+        isAlive: true
+      },
+      guardianInfo: {
+        name: form.guardianName.value,
+        phone: form.guardianPhone.value,
+        email: form.guardianEmail.value,
+        relationship: form.guardianRelationship.value, // must match enum (e.g. SIBLING, UNCLE, OTHER)
+        occupation: form.guardianOccupation.value,
+        company: form.guardianCompany.value,
+        age: parseInt(form.guardianAge.value),
+        isPrimaryContact: true,
+        isEmergencyContact: true
+      }
+    },
+    academicProfileDTO: {
+      schoolName: form.schoolName.value,
+      schoolBoard: form.schoolBoard.value,
+      currentClass: form.currentClass.value,
+      currentAcademicYear: form.currentAcademicYear.value,
+      currentScorePercentage: parseFloat(form.currentScorePercentage.value),
+      stream: form.stream.value, // must match enum (e.g. SCIENCE, COMMERCE, ARTS)
+      specialization: form.specialization.value,
+      admissionDate: form.admissionDate.value
+    },
+    studentAddressInfoDTO: {
+      addressType: form.addressType.value,
+      streetAddress: form.streetAddress.value,
+      city: form.city.value,
+      state: form.state.value,
+      postalCode: form.postalCode.value,
+      country: form.country.value,
+      isPrimary: true
+    },
+    examScoresDTO: {
+      examName: form.examName.value,
+      examDate: form.examDate.value,
+      examType: form.examType.value,
+      subject1Name: form.subject1Name.value,
+      subject1Score: parseInt(form.subject1Score.value),
+      subject1OutOf: parseInt(form.subject1OutOf.value),
+      subject2Name: form.subject2Name.value,
+      subject2Score: parseInt(form.subject2Score.value),
+      subject2OutOf: parseInt(form.subject2OutOf.value),
+      subject3Name: form.subject3Name.value,
+      subject3Score: parseInt(form.subject3Score.value),
+      subject3OutOf: parseInt(form.subject3OutOf.value),
+      totalScore: parseInt(form.totalScore.value),
+      totalMarks: parseInt(form.totalMarks.value),
+      percentage: parseFloat(form.percentage.value),
+      examRank: parseInt(form.examRank.value)
+    }
+  };
+
+  console.log("Payload being sent:", payload);
+
+  // Send to backend
+  fetch("http://localhost:8082/api/students/add", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  })
+  .then(response => {
+    if (!response.ok) throw new Error("Failed to submit: " + response.status);
+    return response.json();
+  })
+  .then(data => {
+    document.getElementById("response").innerText = "✅ Student added successfully!";
+    console.log("Backend response:", data);
+  })
+  .catch(error => {
+    document.getElementById("response").innerText = "❌ Error: " + error.message;
+    console.error("Error:", error);
+  });
+});
+
+</script>
 </body>
 </html>
