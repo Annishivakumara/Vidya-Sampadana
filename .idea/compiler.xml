@@ -12,7 +12,6 @@
         </processorPath>
         <module name="analytics-service" />
         <module name="notification-service" />
-        <module name="activity-logging-service" />
       </profile>
       <profile name="Annotation profile for student-service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -35,7 +34,6 @@
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar" />
         </processorPath>
-        <module name="course-service" />
         <module name="iamservice" />
         <module name="neet-updates" />
         <module name="mentor-service" />
@@ -44,6 +42,10 @@
         <module name="kcet-updates" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="activity-logging-service" target="17" />
+      <module name="course-service" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">

@@ -22,6 +22,8 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/activity-logging-service/pom.xml" />
+        <option value="$PROJECT_DIR$/course-service/pom.xml" />
         <option value="E:/FinalYear Projects - 3/Project-planning/all-11-services/student-service/student-service/student-service/pom.xml" />
       </set>
     </option>
