@@ -26,7 +26,6 @@ public class Kcetupdates {
     @Column(name = "content")
     private String content;
 
-
     @Enumerated(EnumType.STRING)
     @Column(name = "updateType")
     private UpdateType updateType;

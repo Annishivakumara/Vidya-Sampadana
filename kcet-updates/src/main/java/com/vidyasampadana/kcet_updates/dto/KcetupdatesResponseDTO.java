@@ -10,6 +10,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class KcetupdatesResponseDTO {
+    private Long id;
     private String title;
     private String content;
     private String updateType;
@@ -22,7 +23,7 @@ public class KcetupdatesResponseDTO {
     private  String category;
     private  String tags;
     private String audience;
-    private kcetImagesDto kcetImages;
+    private kcetImagesDTO kcetImages;
     private kcetVideosDto kcetVideos;
     private  String sourceUrl;
     private int viewCount;

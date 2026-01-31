@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class KcetAttachmentsDto {
+public class KcetAttachmentsDTO {
     private String OfficialPdfs;
     private String notices;
     private String ewFiles;

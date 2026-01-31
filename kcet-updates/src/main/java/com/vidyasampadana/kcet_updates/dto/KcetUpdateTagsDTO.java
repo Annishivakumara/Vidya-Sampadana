@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class kcetImagesDto {
-   private String caption;
-   private String fileType;
+public class KcetUpdateTagsDTO {
+    private  String tag;
 }
