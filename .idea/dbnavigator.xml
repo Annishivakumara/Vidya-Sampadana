@@ -85,6 +85,12 @@ HTTP 429: Too Many Requests (Request URL: https://api.openai.com/v1/chat/complet
         </chats>
         <tools />
       </assistant-state>
+      <assistant-state connection-id="virtual-mysql-connection" assistant-type="SELECT_AI" default-profile-name="" selected-chat-id="" availability="UNAVAILABLE" acknowledgement="NONE">
+        <tools />
+      </assistant-state>
+      <assistant-state connection-id="virtual-mysql-connection" assistant-type="PUBLIC" default-profile-name="" selected-chat-id="" availability="AVAILABLE" acknowledgement="NONE" selected="true">
+        <tools />
+      </assistant-state>
     </assistants>
     <selection-state>
       <model-selection>
@@ -128,6 +134,9 @@ select * from student_contact_info;]]></console>
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
+  </component>
+  <component name="DBNavigator.Project.FileConnectionMappingManager">
+    <mapping file-url="file://$PROJECT_DIR$/iamservice/src/main/java/com/vidyasampadana/iamservice" connection-id="virtual-mysql-connection" session-id="MAIN" current-schema="" />
   </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />

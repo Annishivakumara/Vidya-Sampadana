@@ -16,8 +16,8 @@ import java.time.LocalDateTime;
 public class KcetAttachments {
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
-        @Column(name = "attachment_id")
-        private Long attachment_id;
+        @Column(name = "attachmentId")
+        private Long attachmentId;
 
         @Column(name = "OfficialPdfs")
         private String OfficialPdfs;

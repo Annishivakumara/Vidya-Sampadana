@@ -18,6 +18,7 @@
         <option value="$PROJECT_DIR$/chat-service/pom.xml" />
         <option value="$PROJECT_DIR$/kcet-updates/pom.xml" />
         <option value="$PROJECT_DIR$/neet-updates/pom.xml" />
+        <option value="$PROJECT_DIR$/about-us-service/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

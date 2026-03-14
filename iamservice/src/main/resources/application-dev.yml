@@ -1,0 +1,27 @@
+server:
+  port: 8086
+
+spring:
+  # Database Connection
+  datasource:
+    url: jdbc:mysql://localhost:3306/vidya_auth
+    username: root
+    password: Anni@2005
+
+  # JPA and Hibernate Configuration
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+    show-sql: true
+
+  cloud:
+    discovery:
+      enabled: false
+
+eureka:
+  client:
+    enabled: false

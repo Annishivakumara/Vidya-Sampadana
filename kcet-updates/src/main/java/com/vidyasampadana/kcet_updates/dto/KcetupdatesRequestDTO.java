@@ -22,8 +22,8 @@ public class KcetupdatesRequestDTO {
     private  String category;
     private  String tags;
     private String audience;
-    private kcetImagesDTO kcetImages;
-    private kcetVideosDto kcetVideos;
+    private KcetImagesDTO kcetImages;
+    private KcetVideosDto kcetVideos;
     private  String sourceUrl;
     private int viewCount;
 }

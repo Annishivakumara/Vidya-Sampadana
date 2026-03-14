@@ -66,11 +66,11 @@ public class Kcetupdates {
     private Audience audience;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "image_id")
+    @JoinColumn(name = "imageId")
     private List<KcetImages> kcetImages;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "video_id")
+    @JoinColumn(name = "videoId")
     private List<KcetVideos> kcetVideos;
 
     @OneToMany(cascade = CascadeType.ALL)

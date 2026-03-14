@@ -4,7 +4,6 @@ import com.vidyasampadana.kcet_updates.dto.KcetupdatesResponseDTO;
 import com.vidyasampadana.kcet_updates.entity.Kcetupdates;
 import com.vidyasampadana.kcet_updates.services.StudentKcetUpdateService;
 import lombok.RequiredArgsConstructor;
-import org.apache.hc.core5.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

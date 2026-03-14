@@ -15,8 +15,8 @@ import java.time.LocalDateTime;
 public class KcetVideos {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "video_id")
-    private Long video_id;
+    @Column(name = "videoId")
+    private Long videoId;
 
     @Column(name = "url")
     private String url;
@@ -35,6 +35,9 @@ public class KcetVideos {
 
     @Column(name = "createdAt")
     private LocalDateTime createdAt;
+
+    @Column(name = "updatedAt")
+    private LocalDateTime updatedAt;
 
     @Column(name = "deletedAt")
     private  LocalDateTime deletedAt;

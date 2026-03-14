@@ -18,8 +18,8 @@ public class KcetImages {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "image_id")
-    private Long image_id;
+    @Column(name = "imageId")
+    private Long imageId;
 
     @Column(name = "url")
     private String url;
@@ -32,6 +32,9 @@ public class KcetImages {
 
     @Column(name = "createdAt")
     private LocalDateTime createdAt;
+
+    @Column(name = "updatedAt")
+    private LocalDateTime updatedAt;
 
     @Column(name = "deletedAt")
     private  LocalDateTime deletedAt;
