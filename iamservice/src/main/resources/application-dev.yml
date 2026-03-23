@@ -25,3 +25,21 @@ spring:
 eureka:
   client:
     enabled: false
+
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.hibernate: INFO
+    com.vidyasampadana: DEBUG
+
+
+security:
+  jwt:
+    secret: ${JWT_SECRET:mySuperSecretKey_2026_@#$_VeryLongString_12345}
+    issuer: ${JWT_ISSUER:api.substring.com}
+    access-ttl-seconds: ${JWT_ACCESS_TTL_SECONDS:3600}
+    refresh-ttl-seconds: ${JWT_REFRESH_TTl_SECONDS:86400}
+    refresh-token-cookie-name: ${JWT_REFRESH_COOKIE_NAME:refreshToken}
+    cookie-secure: ${JWT_COOKIE_HTTP_ONLY:true}
+    cookie-same-site: ${JWT_COOKIE_SAME_SITE:lax}

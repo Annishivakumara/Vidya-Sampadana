@@ -1,4 +1,4 @@
-package com.vidyasampadana.iamservice.services;
+package com.vidyasampadana.iamservice.services.Impli;
 
 import com.vidyasampadana.iamservice.dto.UserDto;
 import com.vidyasampadana.iamservice.entity.Provider;
@@ -6,6 +6,7 @@ import com.vidyasampadana.iamservice.entity.User;
 import com.vidyasampadana.iamservice.exception.ResourceNotFoundException;
 import com.vidyasampadana.iamservice.helper.UserHelper;
 import com.vidyasampadana.iamservice.repository.UserRepository;
+import com.vidyasampadana.iamservice.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class UserServiceImpli implements  UserService{
+public class UserServiceImpli implements UserService {
 
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
