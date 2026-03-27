@@ -1,7 +1,6 @@
 package com.vidyasampadana.kcet_updates.mapper;
 
 import com.vidyasampadana.kcet_updates.dto.KcetAttachmentsDTO;
-import com.vidyasampadana.kcet_updates.dto.KcetupdatesRequestDTO;
 import com.vidyasampadana.kcet_updates.entity.KcetAttachments;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

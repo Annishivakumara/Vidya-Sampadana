@@ -17,3 +17,4 @@ AuthenticationManager: Manages the authentication process (e.g., checking userna
 AuthenticationProvider: A specific component (like DaoAuthenticationProvider) that knows how to validate the credentials.
 SecurityContext: Holds the authenticated user’s details for the duration of the session.
 FilterSecurityInterceptor: Enforces authorization, ensuring the user has access to the requested resource.
+

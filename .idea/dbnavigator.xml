@@ -11,9 +11,6 @@
   </component>
   <component name="DBNavigator.Project.DatabaseAssistantManager">
     <assistants>
-      <assistant-state connection-id="f042c12e-79eb-4836-89fb-a6d224c886d9" assistant-type="SELECT_AI" default-profile-name="" selected-chat-id="" availability="UNAVAILABLE" acknowledgement="NONE">
-        <tools />
-      </assistant-state>
       <assistant-state connection-id="f042c12e-79eb-4836-89fb-a6d224c886d9" assistant-type="PUBLIC" default-profile-name="" selected-chat-id="E60FF3A6DC2647AA8040C70340FFAD05" availability="AVAILABLE" acknowledgement="ENGAGED" selected="true">
         <chats>
           <chat id="675D9C75EDF64DD3B8C780EB29262BCC" title="" session-signature="" timestamp="1767667166096">
@@ -85,10 +82,13 @@ HTTP 429: Too Many Requests (Request URL: https://api.openai.com/v1/chat/complet
         </chats>
         <tools />
       </assistant-state>
-      <assistant-state connection-id="virtual-mysql-connection" assistant-type="SELECT_AI" default-profile-name="" selected-chat-id="" availability="UNAVAILABLE" acknowledgement="NONE">
+      <assistant-state connection-id="f042c12e-79eb-4836-89fb-a6d224c886d9" assistant-type="SELECT_AI" default-profile-name="" selected-chat-id="" availability="UNAVAILABLE" acknowledgement="NONE">
         <tools />
       </assistant-state>
       <assistant-state connection-id="virtual-mysql-connection" assistant-type="PUBLIC" default-profile-name="" selected-chat-id="" availability="AVAILABLE" acknowledgement="NONE" selected="true">
+        <tools />
+      </assistant-state>
+      <assistant-state connection-id="virtual-mysql-connection" assistant-type="SELECT_AI" default-profile-name="" selected-chat-id="" availability="UNAVAILABLE" acknowledgement="NONE">
         <tools />
       </assistant-state>
     </assistants>

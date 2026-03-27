@@ -1,8 +1,8 @@
 package com.vidyasampadana.kcet_updates.mapper;
 
 
-import com.vidyasampadana.kcet_updates.dto.KcetupdatesRequestDTO;
-import com.vidyasampadana.kcet_updates.dto.KcetupdatesResponseDTO;
+import com.vidyasampadana.kcet_updates.dto.KcetUpdatesRequestDTO;
+import com.vidyasampadana.kcet_updates.dto.KcetUpdatesResponseDTO;
 import com.vidyasampadana.kcet_updates.entity.Kcetupdates;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -15,13 +15,13 @@ public interface AdminKcetUpdateMapper {
     @Mapping(source = "KcetVideosMapper" , target="KcetVideos")
     @Mapping(source = "KcetAttachmentsMapper"  , target="KcetAttachments")
     @Mapping(source = "KcetUpdatesTagsMapper"  , target = "KcetUpdateTags")
-    Kcetupdates toEntity(KcetupdatesRequestDTO dto);
+    Kcetupdates toEntity(KcetUpdatesRequestDTO dto);
     @Mapping(source = "KcetImages", target = "KcetImagesMapper")
     @Mapping(source = "KcetVideos" , target="KcetVideosMapper")
     @Mapping(source = "KcetAttachments"  , target="KcetAttachmentsMapper")
     @Mapping(source = "KcetUpdateTags"  , target = "KcetUpdatesTagsMapper")
-    KcetupdatesResponseDTO toResponseDto(Kcetupdates entity);
-    List<KcetupdatesResponseDTO> toResponseDtoList(List<Kcetupdates> entities);
+    KcetUpdatesResponseDTO toResponseDto(Kcetupdates entity);
+    List<KcetUpdatesResponseDTO> toResponseDtoList(List<Kcetupdates> entities);
 }
 // Stoped here to Converting the Admin updateds  into dto's
 //start working on this  later Mapping it to other

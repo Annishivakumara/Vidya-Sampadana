@@ -1,7 +1,6 @@
 package com.vidyasampadana.kcet_updates.mapper;
 
 import com.vidyasampadana.kcet_updates.dto.KcetImagesDTO;
-import com.vidyasampadana.kcet_updates.dto.KcetupdatesResponseDTO;
 import com.vidyasampadana.kcet_updates.entity.KcetImages;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

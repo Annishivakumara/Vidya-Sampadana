@@ -1,6 +1,6 @@
 package com.vidyasampadana.kcet_updates.mapper;
 
-import com.vidyasampadana.kcet_updates.dto.KcetupdatesResponseDTO;
+import com.vidyasampadana.kcet_updates.dto.KcetUpdatesResponseDTO;
 import com.vidyasampadana.kcet_updates.entity.Kcetupdates;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -13,6 +13,6 @@ public interface StudentKcetUpdateMapper {
     @Mapping(source = "KcetVideos" , target="KcetVideosMapper")
     @Mapping(source = "KcetAttachments"  , target="KcetAttachmentsMapper")
     @Mapping(source = "KcetUpdateTags"  , target = "KcetUpdatesTagsMapper")
-    KcetupdatesResponseDTO toResponseDTO(Kcetupdates entity);
-    List<KcetupdatesResponseDTO>  toListResponse(List<Kcetupdates> tntity);
+    KcetUpdatesResponseDTO toResponseDTO(Kcetupdates entity);
+    List<KcetUpdatesResponseDTO>  toListResponse(List<Kcetupdates> tntity);
 }

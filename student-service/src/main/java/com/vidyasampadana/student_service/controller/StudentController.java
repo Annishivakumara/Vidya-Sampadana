@@ -6,6 +6,7 @@ import com.vidyasampadana.student_service.service.StudentService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,12 +17,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/students")
-@RequiredArgsConstructor
+@AllArgsConstructor
 @CrossOrigin(origins = "http://localhost:5500")
 @Tag(name = "Student Management", description = "APIs for managing students")
 public class StudentController {
 
-    @Autowired
     private  final StudentService studentService;
 
     @PostMapping("/add")

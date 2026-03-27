@@ -93,8 +93,8 @@ public class JwtService {
 
     public boolean isAccessToken(String token) {
         try {
-            String type = (String) parse(token).getPayload().get("typ");
-            return "access".equals(type);
+            Claims c =  parse(token).getPayload();
+            return "access".equals(c.get("typ"));
         } catch (Exception e) {
             return false; // invalid or expired token
         }
@@ -102,17 +102,21 @@ public class JwtService {
 
     public boolean isRefreshToken(String token) {
         try {
-            String type = (String) parse(token).getPayload().get("typ");
-            return "refresh".equals(type);
+            Claims c = parse(token).getPayload();
+            return "refresh".equals(c.get("typ"));
         } catch (Exception e) {
             return false; // invalid / expired token
         }
     }
-    public String getUserId(String token) {
+    public UUID getUserId(String token) {
         try {
-            return parse(token).getPayload().getId();
+            Claims c= parse(token).getPayload();
+            return UUID.fromString(c.getSubject());
         } catch (Exception e) {
             return null; // invalid / expired token
         }
+    }
+    public String getJti(String token){
+        return parse(token).getPayload().getId();
     }
 }
