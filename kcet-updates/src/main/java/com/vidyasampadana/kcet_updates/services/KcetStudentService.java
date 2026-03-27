@@ -1,15 +1,14 @@
 package com.vidyasampadana.kcet_updates.services;
 
-import com.vidyasampadana.kcet_updates.dto.KcetupdatesRequestDTO;
-import com.vidyasampadana.kcet_updates.dto.KcetupdatesResponseDTO;
+import com.vidyasampadana.kcet_updates.dto.KcetUpdatesResponseDTO;
 import com.vidyasampadana.kcet_updates.entity.Kcetupdates;
 
 import java.util.List;
 
 public interface KcetStudentService {
-    List<KcetupdatesResponseDTO> getActiveUpdates();
+    List<KcetUpdatesResponseDTO> getActiveUpdates();
 
-    List<KcetupdatesResponseDTO> getUpdatesByCategory(Kcetupdates.Category category);
+    List<KcetUpdatesResponseDTO> getUpdatesByCategory(Kcetupdates.Category category);
 
-    List<KcetupdatesResponseDTO> searchUpdates(String keyword);
+    List<KcetUpdatesResponseDTO> searchUpdates(String keyword);
 }

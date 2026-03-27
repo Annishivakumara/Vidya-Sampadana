@@ -9,7 +9,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class KcetupdatesRequestDTO {
+public class KcetUpdatesRequestDTO {
     private String title;
     private String content;
     private String updateType;

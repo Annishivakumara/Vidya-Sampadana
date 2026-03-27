@@ -1,4 +1,8 @@
 package com.vidyasampadana.neet_updates.entity;
 
-public class Neetupdates {
+import jakarta.persistence.Entity;
+
+@Entity
+public class NeetUpdates {
+
 }

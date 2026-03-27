@@ -1,8 +1,7 @@
 package com.vidyasampadana.kcet_updates.controller;
 
-import com.vidyasampadana.kcet_updates.dto.KcetupdatesRequestDTO;
-import com.vidyasampadana.kcet_updates.dto.KcetupdatesResponseDTO;
-import com.vidyasampadana.kcet_updates.entity.Kcetupdates;
+import com.vidyasampadana.kcet_updates.dto.KcetUpdatesRequestDTO;
+import com.vidyasampadana.kcet_updates.dto.KcetUpdatesResponseDTO;
 import com.vidyasampadana.kcet_updates.services.KcetAdminServices;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -20,9 +19,9 @@ public class KcetAdminController {
     private final KcetAdminServices kcetServices;
 
     @PostMapping
-    public ResponseEntity<KcetupdatesResponseDTO>  createKcetUpdate(@Valid @RequestBody KcetupdatesRequestDTO requestDTO){
+    public ResponseEntity<KcetUpdatesResponseDTO>  createKcetUpdate(@Valid @RequestBody KcetUpdatesRequestDTO requestDTO){
 
-        KcetupdatesResponseDTO responseDTO=kcetServices.createKcetUpdate(requestDTO);
+        KcetUpdatesResponseDTO responseDTO=kcetServices.createKcetUpdate(requestDTO);
         return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
     }
     @DeleteMapping("/kcetUpdateId}")

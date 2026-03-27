@@ -1,8 +1,6 @@
 package com.vidyasampadana.kcet_updates.services;
 
-import com.netflix.discovery.converters.Auto;
-import com.vidyasampadana.kcet_updates.dto.KcetupdatesRequestDTO;
-import com.vidyasampadana.kcet_updates.dto.KcetupdatesResponseDTO;
+import com.vidyasampadana.kcet_updates.dto.KcetUpdatesResponseDTO;
 import com.vidyasampadana.kcet_updates.entity.Kcetupdates;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +16,7 @@ public class StudentKcetUpdateService implements KcetStudentService{
     private final StudentKcetUpdateService studentKcetUpdateService;
 
     @Override
-    public List<KcetupdatesResponseDTO> getActiveUpdates() {
+    public List<KcetUpdatesResponseDTO> getActiveUpdates() {
         if(true){
 
         }
@@ -26,12 +24,12 @@ public class StudentKcetUpdateService implements KcetStudentService{
     }
 
     @Override
-    public List<KcetupdatesResponseDTO> getUpdatesByCategory(Kcetupdates.Category category) {
+    public List<KcetUpdatesResponseDTO> getUpdatesByCategory(Kcetupdates.Category category) {
         return List.of();
     }
 
     @Override
-    public List<KcetupdatesResponseDTO> searchUpdates(String keyword) {
+    public List<KcetUpdatesResponseDTO> searchUpdates(String keyword) {
         return List.of();
     }
 }
