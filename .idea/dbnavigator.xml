@@ -11,65 +11,68 @@
   </component>
   <component name="DBNavigator.Project.DatabaseAssistantManager">
     <assistants>
+      <assistant-state connection-id="f042c12e-79eb-4836-89fb-a6d224c886d9" assistant-type="SELECT_AI" default-profile-name="" selected-chat-id="" availability="UNAVAILABLE" acknowledgement="NONE">
+        <tools />
+      </assistant-state>
       <assistant-state connection-id="f042c12e-79eb-4836-89fb-a6d224c886d9" assistant-type="PUBLIC" default-profile-name="" selected-chat-id="E60FF3A6DC2647AA8040C70340FFAD05" availability="AVAILABLE" acknowledgement="ENGAGED" selected="true">
         <chats>
           <chat id="675D9C75EDF64DD3B8C780EB29262BCC" title="" session-signature="" timestamp="1767667166096">
             <messages>
               <message id="56693857-c127-4fe3-b521-e574cfe6aa9d" type="NEUTRAL" author="USER" timestamp="1767667166096" folded="false">
-                <content><![CDATA[Hi]]></content>
+                <content>Hi</content>
                 <context provider="OPEN_AI" profile="implicit-profile-1e9398da-9a53-4e40-9125-dd0d5083b649" model="GPT_4_O" action="" interactive="true" />
               </message>
               <message id="cbc47310-fe55-47e7-892a-3c7438b3ba74" type="ERROR" author="SYSTEM" timestamp="1767667169351" folded="false">
-                <content><![CDATA[Failed to invoke Public LLM.
+                <content>Failed to invoke Public LLM.
 
 Error details:
 HTTP 429: Too Many Requests (Request URL: https://api.openai.com/v1/chat/completions)
 {
-    "error": {
-        "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.",
-        "type": "insufficient_quota",
-        "param": null,
-        "code": "insufficient_quota"
+    &quot;error&quot;: {
+        &quot;message&quot;: &quot;You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.&quot;,
+        &quot;type&quot;: &quot;insufficient_quota&quot;,
+        &quot;param&quot;: null,
+        &quot;code&quot;: &quot;insufficient_quota&quot;
     }
-}]]></content>
+}</content>
                 <context provider="OPEN_AI" profile="implicit-profile-1e9398da-9a53-4e40-9125-dd0d5083b649" model="GPT_4_O" action="" interactive="true" />
               </message>
               <message id="4151ee91-15b4-4387-89a9-f3ac103af0b0" type="NEUTRAL" author="USER" timestamp="1767667183814" folded="false">
-                <content><![CDATA[hi]]></content>
+                <content>hi</content>
                 <context provider="OPEN_AI" profile="implicit-profile-1e9398da-9a53-4e40-9125-dd0d5083b649" model="GPT_4_O" action="" interactive="true" />
               </message>
               <message id="21643483-a7ac-4f19-9564-df18d6b88a4b" type="ERROR" author="SYSTEM" timestamp="1767667186739" folded="false">
-                <content><![CDATA[Failed to invoke Public LLM.
+                <content>Failed to invoke Public LLM.
 
 Error details:
 HTTP 429: Too Many Requests (Request URL: https://api.openai.com/v1/chat/completions)
 {
-    "error": {
-        "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.",
-        "type": "insufficient_quota",
-        "param": null,
-        "code": "insufficient_quota"
+    &quot;error&quot;: {
+        &quot;message&quot;: &quot;You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.&quot;,
+        &quot;type&quot;: &quot;insufficient_quota&quot;,
+        &quot;param&quot;: null,
+        &quot;code&quot;: &quot;insufficient_quota&quot;
     }
-}]]></content>
+}</content>
                 <context provider="OPEN_AI" profile="implicit-profile-1e9398da-9a53-4e40-9125-dd0d5083b649" model="GPT_4_O" action="" interactive="true" />
               </message>
               <message id="4817dd67-60d3-481e-bdb0-2b8aced10676" type="NEUTRAL" author="USER" timestamp="1767667240722" folded="false">
-                <content><![CDATA[gi]]></content>
+                <content>gi</content>
                 <context provider="OPEN_AI" profile="implicit-profile-1e9398da-9a53-4e40-9125-dd0d5083b649" model="GPT_4_O" action="" interactive="true" />
               </message>
               <message id="a20cf8aa-458b-4df0-8365-fd877d309c97" type="ERROR" author="SYSTEM" timestamp="1767667242492" folded="false">
-                <content><![CDATA[Failed to invoke Public LLM.
+                <content>Failed to invoke Public LLM.
 
 Error details:
 HTTP 429: Too Many Requests (Request URL: https://api.openai.com/v1/chat/completions)
 {
-    "error": {
-        "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.",
-        "type": "insufficient_quota",
-        "param": null,
-        "code": "insufficient_quota"
+    &quot;error&quot;: {
+        &quot;message&quot;: &quot;You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.&quot;,
+        &quot;type&quot;: &quot;insufficient_quota&quot;,
+        &quot;param&quot;: null,
+        &quot;code&quot;: &quot;insufficient_quota&quot;
     }
-}]]></content>
+}</content>
                 <context provider="OPEN_AI" profile="implicit-profile-1e9398da-9a53-4e40-9125-dd0d5083b649" model="GPT_4_O" action="" interactive="true" />
               </message>
             </messages>
@@ -82,13 +85,10 @@ HTTP 429: Too Many Requests (Request URL: https://api.openai.com/v1/chat/complet
         </chats>
         <tools />
       </assistant-state>
-      <assistant-state connection-id="f042c12e-79eb-4836-89fb-a6d224c886d9" assistant-type="SELECT_AI" default-profile-name="" selected-chat-id="" availability="UNAVAILABLE" acknowledgement="NONE">
+      <assistant-state connection-id="virtual-mysql-connection" assistant-type="SELECT_AI" default-profile-name="" selected-chat-id="" availability="UNAVAILABLE" acknowledgement="NONE">
         <tools />
       </assistant-state>
       <assistant-state connection-id="virtual-mysql-connection" assistant-type="PUBLIC" default-profile-name="" selected-chat-id="" availability="AVAILABLE" acknowledgement="NONE" selected="true">
-        <tools />
-      </assistant-state>
-      <assistant-state connection-id="virtual-mysql-connection" assistant-type="SELECT_AI" default-profile-name="" selected-chat-id="" availability="UNAVAILABLE" acknowledgement="NONE">
         <tools />
       </assistant-state>
     </assistants>

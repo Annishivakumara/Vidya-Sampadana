@@ -2,23 +2,24 @@ package com.vidyasampadana.student_service.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 
 @Entity
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Table(name = "student_academic_profile")
 @NoArgsConstructor
 @AllArgsConstructor
 public class StudentAcademicProfile  {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "academic_id") // <-- match DB column
+    @EqualsAndHashCode.Include
     private Long studentAcaId;
 
 

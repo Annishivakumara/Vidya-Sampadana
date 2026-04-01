@@ -1,6 +1,6 @@
 package com.vidyasampadana.student_service.mapper;
 
-import com.vidyasampadana.student_service.dto.studentRequestDTO;
+import com.vidyasampadana.student_service.dto.StudentRequestDTO;
 import com.vidyasampadana.student_service.dto.StudentResponseDTO;
 import com.vidyasampadana.student_service.entity.Students;
 import org.mapstruct.Mapper;
@@ -20,7 +20,7 @@ public interface StudentMapper {
     @Mapping(source = "parentInfoDTO", target = "studentParentInfo")
     @Mapping(source = "studentAddressInfoDTO", target = "studentAddressInfo")
     @Mapping(source = "examScoresDTO", target = "studentExamScores")
-    Students toEntity(studentRequestDTO dto);
+    Students toEntity(StudentRequestDTO dto);
 
     @Mapping(source = "contactInfo", target = "contactInfoDTO")
     @Mapping(source = "academicProfile", target = "academicProfileDTO")
@@ -35,5 +35,5 @@ public interface StudentMapper {
     @Mapping(source = "parentInfoDTO", target = "studentParentInfo")
     @Mapping(source = "studentAddressInfoDTO", target = "studentAddressInfo")
     @Mapping(source = "examScoresDTO", target = "studentExamScores")
-    void updateStudentFromDto(studentRequestDTO dto, @MappingTarget Students entity);
+    void updateStudentFromDto(StudentRequestDTO dto, @MappingTarget Students entity);
 }

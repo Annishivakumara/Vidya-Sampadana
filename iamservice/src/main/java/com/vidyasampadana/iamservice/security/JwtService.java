@@ -2,10 +2,7 @@ package com.vidyasampadana.iamservice.security;
 
 import com.vidyasampadana.iamservice.entity.Role;
 import com.vidyasampadana.iamservice.entity.User;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jws;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -83,12 +80,8 @@ public class JwtService {
     }
 
     // parse the token
-    public Jws<Claims> parse(String token){
-        try{
-            return Jwts.parser().verifyWith(key).build().parseSignedClaims(token);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+    public Jws<Claims> parse(String token) throws JwtException {
+        return Jwts.parser().verifyWith(key).build().parseSignedClaims(token);
     }
 
     public boolean isAccessToken(String token) {
@@ -119,4 +112,13 @@ public class JwtService {
     public String getJti(String token){
         return parse(token).getPayload().getId();
     }
+    public List<String> getRoles(String token){
+        Claims c= parse(token).getPayload();
+        return (List<String>) c.get("roles");
+    }
+    public String getEmail(String token){
+        Claims c=parse(token).getPayload();
+        return (String) c.get("email");
+    }
+
 }

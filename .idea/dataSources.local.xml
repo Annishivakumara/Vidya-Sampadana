@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal" created-in="IU-261.22158.277">
+    <data-source name="chat_db@localhost" uuid="38ed1cb4-c9f0-4584-88b6-2172f12f09a6">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MONGO" />
+      <schema-mapping />
+    </data-source>
+    <data-source name="vidya_sampadana_db@localhost" uuid="694150ad-4952-43dd-af8a-63455f373512">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" />
+      <user-name>root</user-name>
+      <schema-mapping />
+    </data-source>
+    <data-source name="vidya_sampadana_db@localhost" uuid="69bbf1c6-6dca-4feb-b422-df6ea4489ef4">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" />
+      <user-name>root</user-name>
+      <schema-mapping />
+    </data-source>
+    <data-source name="vidya_auth@localhost" uuid="f11ceee9-dabe-437d-aaa7-3586dbe140a4">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" />
+      <user-name>root</user-name>
+      <schema-mapping />
+    </data-source>
+    <data-source name="vidya_sampadana_db@localhost" uuid="7b94c318-ea8b-487e-8b67-6d65d099629e">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" />
+      <user-name>root</user-name>
+      <schema-mapping />
+    </data-source>
+    <data-source name="vidya_sampadana_db@localhost" uuid="53bbde2c-417b-4fe6-9831-c03dc4e359e7">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" />
+      <user-name>root</user-name>
+      <schema-mapping />
+    </data-source>
+    <data-source name="analytics_db@localhost" uuid="3404229c-2f47-4de8-9699-f8c5e0f09857">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MONGO" />
+      <schema-mapping />
+    </data-source>
+    <data-source name="vidya_sampadana_db@localhost" uuid="471d1cb9-8db5-4431-be78-37142ce11de5">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" />
+      <user-name>root</user-name>
+      <schema-mapping />
+    </data-source>
+    <data-source name="testdb" uuid="2194cd65-65ce-4333-b8ef-8412abbfaef9">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="H2" />
+      <user-name>root</user-name>
+      <schema-mapping />
+    </data-source>
+  </component>
+</project>

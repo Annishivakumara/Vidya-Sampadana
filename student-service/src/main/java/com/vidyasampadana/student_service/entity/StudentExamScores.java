@@ -1,25 +1,25 @@
 package com.vidyasampadana.student_service.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
 
 @Entity
-@Data
-@Table(name = "student_exam_scores" )
+@Getter
+@Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Table(name = "student_exam_scores")
 @NoArgsConstructor
 @AllArgsConstructor
 public class StudentExamScores {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "exam_id") // <-- match DB column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "exam_id")
+    @EqualsAndHashCode.Include
     private Long examId;
 
     @Column(name = "exam_name", length = 255, nullable = false)
@@ -29,7 +29,7 @@ public class StudentExamScores {
     private LocalDate examDate;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "exam_type")
+    @Column(name = "exam_type", length = 20)
     private ExamType examType;
 
     @Column(name = "subject_1_name", length = 100)
@@ -65,24 +65,19 @@ public class StudentExamScores {
     @Column(name = "total_marks", precision = 6, scale = 2)
     private BigDecimal totalMarks;
 
-    @Column(name = "percentage")
+    @Column(name = "percentage", precision = 5, scale = 2)
     private BigDecimal percentage;
 
+    @Column(name = "exam_rank")
+    private Integer examRank;
 
-    //“Before saving or updating this entity, run this method
     @PrePersist
     @PreUpdate
-    private void calculatePercentage() {
+    public void calculatePercentage() {
         if (totalScore != null && totalMarks != null && totalMarks.compareTo(BigDecimal.ZERO) > 0) {
             this.percentage = totalScore
                     .multiply(BigDecimal.valueOf(100))
                     .divide(totalMarks, 2, RoundingMode.HALF_UP);
         }
     }
-
-    @Column(name = "examRank")
-    private Integer examRank;
-
-
-    public enum ExamType { MOCK, MAINS, ADVANCED, ACTUAL, OTHER }
 }

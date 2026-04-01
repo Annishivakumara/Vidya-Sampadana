@@ -1,15 +1,16 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import Login from './pages/auth/Login';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import LandingPage from "./pages/Components/LandingPage";
+import AboutPage from "./pages/Components/Aboutpage";
 
 function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Navigate to="/login" />} />
-                <Route path="/login" element={<Login />} />
+                <Route path="/" element={<LandingPage />} />
+                <Route path="/about" element={<AboutPage />} />
             </Routes>
         </BrowserRouter>
     );
 }
 
-export default App;
+export default App
