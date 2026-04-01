@@ -1,14 +1,12 @@
 package com.vidyasampadana.student_service.controller;
 
-import com.vidyasampadana.student_service.dto.studentRequestDTO;
+import com.vidyasampadana.student_service.dto.StudentRequestDTO;
 import com.vidyasampadana.student_service.dto.StudentResponseDTO;
 import com.vidyasampadana.student_service.service.StudentService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +24,7 @@ public class StudentController {
 
     @PostMapping("/add")
     @Operation(summary = "student Created ")
-    public ResponseEntity<StudentResponseDTO> createStudent(@Valid @RequestBody studentRequestDTO requestDTO){
+    public ResponseEntity<StudentResponseDTO> createStudent(@Valid @RequestBody StudentRequestDTO requestDTO){
         StudentResponseDTO responsedto=studentService.createStudent(requestDTO);
         return  new ResponseEntity<>(responsedto , HttpStatus.CREATED);
     }
@@ -45,7 +43,7 @@ public class StudentController {
     }
 
     @PutMapping("/{studentId}")
-    public  ResponseEntity<StudentResponseDTO> updateStudent(@Valid @RequestBody studentRequestDTO requestDTO , @PathVariable String studentId){
+    public  ResponseEntity<StudentResponseDTO> updateStudent(@Valid @RequestBody StudentRequestDTO requestDTO , @PathVariable String studentId){
         StudentResponseDTO studentResponsedto= studentService.updateStudentByStudentId(studentId, requestDTO);
         return ResponseEntity.ok(studentResponsedto);
     }

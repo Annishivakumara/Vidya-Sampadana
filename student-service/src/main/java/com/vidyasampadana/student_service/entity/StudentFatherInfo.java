@@ -3,11 +3,10 @@ package com.vidyasampadana.student_service.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
 @Embeddable
 @NoArgsConstructor
 @AllArgsConstructor
@@ -38,7 +37,7 @@ public class StudentFatherInfo {
     @Column(name = "fatherQualification", length = 100)
     private String qualification;
 
-    @Column(name = "father_Is_alive")
+    @Column(name = "father_Is_alive", columnDefinition = "BOOLEAN DEFAULT TRUE")
     private Boolean isAlive = true;
 
 }

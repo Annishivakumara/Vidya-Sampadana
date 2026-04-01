@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class studentRequestDTO{
+public class StudentRequestDTO {
     private Long id;
     private String studentId;
     // Nested relationship summaries

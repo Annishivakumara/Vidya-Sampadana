@@ -1,26 +1,25 @@
 package com.vidyasampadana.student_service.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
 @Entity
+@Getter
+@Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "student_address_info")
 public class StudentAddressInfo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "address_id") // <-- match DB column
-    private Long  addressId;
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "address_id")
+    @EqualsAndHashCode.Include
+    private Long addressId;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "address_type")
+    @Column(name = "address_type", length = 20)
     private AddressType addressType;
 
     @Column(name = "street_address", length = 255, nullable = false)
@@ -35,13 +34,9 @@ public class StudentAddressInfo {
     @Column(name = "postal_code", length = 20, nullable = false)
     private String postalCode;
 
-    @Column(name = "country", length = 100)
-    private String country = "India";
+    @Column(name = "country", length = 100, columnDefinition = "VARCHAR(100) DEFAULT 'India'")
+    private String country;
 
-
-    @Column(name = "is_primary")
-    private Boolean isPrimary = false;
-
-
-    public     enum AddressType { CURRENT, PERMANENT, GUARDIAN, OTHER }
+    @Column(name = "is_primary", columnDefinition = "BOOLEAN DEFAULT FALSE")
+    private Boolean isPrimary;
 }
