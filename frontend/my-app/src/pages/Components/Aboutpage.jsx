@@ -158,7 +158,7 @@ export default function AboutPage() {
                         {NAV_LINKS.map((l) => (
                             <a
                                 key={l}
-                                href="#"
+                                href=""
                                 style={{ ...styles.navLink, ...(l === "About" ? styles.navLinkActive : {}) }}
                                 onClick={(e) => e.preventDefault()}
                             >
@@ -174,7 +174,9 @@ export default function AboutPage() {
                 {menuOpen && (
                     <div style={styles.mobileMenu}>
                         {NAV_LINKS.map((l) => (
-                            <a key={l} href="#" style={styles.mobileLink}
+                            <a key={l}
+                               href= href={`/${l.toLowerCase()}`}
+                               style={styles.mobileLink}
                                onClick={(e) => e.preventDefault()}>{l}</a>
                         ))}
                         <button style={styles.mobileCta}>Get Started</button>

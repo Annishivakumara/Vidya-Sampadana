@@ -92,10 +92,13 @@ export default function LandingPage() {
 
                     <div style={styles.navLinks}>
                         {NAV_LINKS.map((l) => (
-                            <a key={l} href="#" style={styles.navLink}
+                            <a key={l}
+                               href={`/${l.toLowerCase()}`}
+                               style={styles.navLink}
                                onClick={(e) => e.preventDefault()}>
                                 {l}
                             </a>
+
                         ))}
                     </div>
                     <button style={styles.navCta}>Get Started</button>
@@ -107,7 +110,9 @@ export default function LandingPage() {
                 {menuOpen && (
                     <div style={styles.mobileMenu}>
                         {NAV_LINKS.map((l) => (
-                            <a key={l} href="#" style={styles.mobileLink}
+                            <a key={l}
+                               href={`/${l.toLowerCase()}`}
+                               style={styles.mobileLink}
                                onClick={(e) => e.preventDefault()}>{l}</a>
                         ))}
                         <button style={styles.mobileCta}>Get Started</button>
