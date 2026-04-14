@@ -1,7 +1,5 @@
 package com.vidyasampadana.kcet_updates.services;
 
-import com.vidyasampadana.kcet_updates.dto.KcetUpdatesRequestDTO;
-import com.vidyasampadana.kcet_updates.dto.KcetUpdatesResponseDTO;
 import com.vidyasampadana.kcet_updates.repository.KcetUpdateRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

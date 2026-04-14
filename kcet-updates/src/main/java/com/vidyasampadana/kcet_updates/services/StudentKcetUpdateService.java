@@ -1,7 +1,6 @@
 package com.vidyasampadana.kcet_updates.services;
 
-import com.vidyasampadana.kcet_updates.dto.KcetUpdatesResponseDTO;
-import com.vidyasampadana.kcet_updates.entity.Kcetupdates;
+import com.vidyasampadana.kcet_updates.entity.KcetUpdates;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +23,7 @@ public class StudentKcetUpdateService implements KcetStudentService{
     }
 
     @Override
-    public List<KcetUpdatesResponseDTO> getUpdatesByCategory(Kcetupdates.Category category) {
+    public List<KcetUpdatesResponseDTO> getUpdatesByCategory(KcetUpdates.Category category) {
         return List.of();
     }
 
