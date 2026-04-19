@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class NeetUpdatesApplication {
+public class SNeetUpdatesApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(NeetUpdatesApplication.class, args);

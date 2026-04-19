@@ -17,7 +17,8 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class StudentAcademicProfile  {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "academic_id") // <-- match DB column
     @EqualsAndHashCode.Include
     private Long studentAcaId;
@@ -50,6 +51,5 @@ public class StudentAcademicProfile  {
     @Column(name = "admission_date")
     private LocalDate admissionDate;
 
-    public enum SchoolBoard { CBSE, ICSE, STATE, IB, IGCSE, OTHER }
-    public enum AcademicStream { SCIENCE, COMMERCE, ARTS, GENERAL }
+
 }

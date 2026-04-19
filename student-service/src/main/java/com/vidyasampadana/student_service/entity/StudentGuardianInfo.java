@@ -10,7 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 public class StudentGuardianInfo {
 
-    @Column(name = "guardian_name", length = 255, nullable = false)
+    @Column(name = "guardian_name", length = 255)
     private String name;
 
     @Column(name = "guardian_phone", length = 20)
@@ -20,7 +20,7 @@ public class StudentGuardianInfo {
     private String email;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "guardian_relationship", length = 30, nullable = false)
+    @Column(name = "guardian_relationship", length = 30)
     private GuardianRelationship relationship;
 
     @Column(name = "guardian_occupation", length = 100)
@@ -32,9 +32,10 @@ public class StudentGuardianInfo {
     @Column(name = "guardian_age")
     private Integer age;
 
-    @Column(name = "G_is_primary_contact", columnDefinition = "BOOLEAN DEFAULT FALSE")
+
+    @Column(name = "guardian_is_primary_contact", columnDefinition = "BOOLEAN DEFAULT FALSE")
     private Boolean isPrimaryContact;
 
-    @Column(name = "G_is_emergency_contact", columnDefinition = "BOOLEAN DEFAULT FALSE")
+    @Column(name = "guardian_is_emergency_contact", columnDefinition = "BOOLEAN DEFAULT FALSE")
     private Boolean isEmergencyContact;
 }

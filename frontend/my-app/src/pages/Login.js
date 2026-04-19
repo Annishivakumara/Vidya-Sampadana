@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { BookOpen } from 'lucide-react';
 import { login as authLogin } from '../services/authService';
-import logo from '../assets/logo.jpg';
+import logo from '../assets/logo.png';
 
 const Login = () => {
   const [email, setEmail] = useState('');

@@ -1,20 +1,29 @@
-import React, { useState } from 'react';
-import { Bell, Filter, Calendar as CalendarIcon, Download, ExternalLink, ChevronRight } from 'lucide-react';
+import React, { useEffect, useMemo, useState } from 'react';
+import { Bell, Calendar as CalendarIcon, Download, ExternalLink } from 'lucide-react';
+import { fetchNeetUpdates } from '../services/neetUpdatesService';
 
 const Updates = () => {
   const [filter, setFilter] = useState('All');
+  const [neetUpdates, setNeetUpdates] = useState([]);
 
-  const updatesList = [
-    {
-      id: 1,
-      category: 'NEET',
-      title: 'Correction Window Extended for NEET UG 2026',
-      date: 'April 16, 2026',
-      tag: 'Urgent',
-      desc: 'The National Testing Agency has extended the application correction window by 48 hours. Please ensure your uploaded documents are correctly sized before the deadline.',
-      hasLink: true,
-      color: 'emerald'
-    },
+  useEffect(() => {
+    let mounted = true;
+
+    fetchNeetUpdates()
+      .then((data) => {
+        if (!mounted) return;
+        setNeetUpdates(Array.isArray(data) ? data : []);
+      })
+      .catch((err) => {
+        console.error('Failed to load NEET updates from backend:', err);
+      });
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  const kcetUpdates = [
     {
       id: 2,
       category: 'KCET',
@@ -24,15 +33,6 @@ const Updates = () => {
       desc: 'Students can now download their admit cards from the official KEA portal. You will need your application number and Date of Birth.',
       hasDownload: true,
       color: 'blue'
-    },
-    {
-      id: 3,
-      category: 'NEET',
-      title: 'Minor changes in Biology Syllabus weightage',
-      date: 'April 10, 2026',
-      tag: 'Syllabus',
-      desc: 'Based on the latest NTA notification, the weightage for standard 11th Genetics has been revised. Check the official module breakdown in the study materials.',
-      color: 'emerald'
     },
     {
       id: 4,
@@ -45,6 +45,46 @@ const Updates = () => {
     }
   ];
 
+  const backendNeetUpdates = useMemo(
+    () =>
+      neetUpdates.map((item, index) => ({
+        id: item.id || `neet-${index}`,
+        category: 'NEET',
+        title: item.title || 'NEET Update',
+        date: item.createdAt ? new Date(item.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) : 'Recently updated',
+        tag: item.category ? String(item.category).replaceAll('_', ' ') : 'Update',
+        desc: item.description || 'Official update available.',
+        hasLink: Boolean(item.sourceUrl),
+        link: item.sourceUrl,
+        color: 'emerald'
+      })),
+    [neetUpdates]
+  );
+
+  const fallbackNeetUpdates = [
+    {
+      id: 1,
+      category: 'NEET',
+      title: 'Correction Window Extended for NEET UG 2026',
+      date: 'April 16, 2026',
+      tag: 'Urgent',
+      desc: 'The National Testing Agency has extended the application correction window by 48 hours. Please ensure your uploaded documents are correctly sized before the deadline.',
+      hasLink: true,
+      color: 'emerald'
+    },
+    {
+      id: 3,
+      category: 'NEET',
+      title: 'Minor changes in Biology Syllabus weightage',
+      date: 'April 10, 2026',
+      tag: 'Syllabus',
+      desc: 'Based on the latest NTA notification, the weightage for standard 11th Genetics has been revised. Check the official module breakdown in the study materials.',
+      color: 'emerald'
+    }
+  ];
+
+  const neetFeed = backendNeetUpdates.length > 0 ? backendNeetUpdates : fallbackNeetUpdates;
+  const updatesList = [...neetFeed, ...kcetUpdates];
   const filteredUpdates = filter === 'All' ? updatesList : updatesList.filter(u => u.category === filter);
 
   return (
@@ -119,9 +159,14 @@ const Updates = () => {
                 {(update.hasLink || update.hasDownload) && (
                   <div className="flex gap-3 pt-4 border-t border-gray-50">
                     {update.hasLink && (
-                      <button className="flex items-center text-sm font-semibold text-brand hover:text-brand-dark transition-colors">
-                         Official Notice <ExternalLink className="w-4 h-4 ml-1.5" />
-                      </button>
+                      <a
+                        href={update.link || '#'}
+                        target={update.link ? '_blank' : undefined}
+                        rel={update.link ? 'noopener noreferrer' : undefined}
+                        className="flex items-center text-sm font-semibold text-brand hover:text-brand-dark transition-colors"
+                      >
+                        Official Notice <ExternalLink className="w-4 h-4 ml-1.5" />
+                      </a>
                     )}
                     {update.hasDownload && (
                       <button className="flex items-center text-sm font-semibold text-blue-600 hover:text-blue-800 transition-colors">

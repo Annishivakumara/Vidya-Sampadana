@@ -44,5 +44,10 @@
       <user-name>root</user-name>
       <schema-mapping />
     </data-source>
+    <data-source name="chat_db@cluster0.ypardi7.mongodb.net" uuid="d5a1f4be-4467-4d46-ada4-f0af01542aed">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MONGO" />
+      <user-name>chat_db_user_1</user-name>
+      <schema-mapping />
+    </data-source>
   </component>
 </project>
