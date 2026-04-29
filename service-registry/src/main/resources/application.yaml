@@ -1,0 +1,15 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: service-registry
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false   # it's the server, not a client
+    fetch-registry: false
+  server:
+    wait-time-in-ms-when-sync-empty: 0

@@ -1,9 +1,9 @@
 server:
-  port: 8082 # Different port for mentor-service to avoid clash with student-service
+  port: 8090 # Different port for mentor-service to avoid clash with student-service
 
 spring:
   application:
-    name: mentor-service
+    name: about_us_service
 
   # 1. MySQL Configuration (Relational Data)
   datasource:
