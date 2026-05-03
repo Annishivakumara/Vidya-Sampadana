@@ -1,22 +1,15 @@
-import apiClient from './apiClient';
+import api from "../utils/axiosConfig";
 
-const API_URL = process.env.REACT_APP_IAM_SERVICE_URL || 'http://localhost:8080/api/auth';
+export const loginUser = async (email, password) => {
+  const response = await api.post("/auth/login", { email, password });
+  return response.data; // expects { token, user }
+};
 
-export const login = async (credentials) => {
-  const response = await apiClient.post(`${API_URL}/login`, credentials);
-  if (response.data.token) {
-    localStorage.setItem('token', response.data.token);
-    localStorage.setItem('user', JSON.stringify(response.data.user));
-  }
+export const registerUser = async (name, email, password) => {
+  const response = await api.post("/auth/register", { name, email, password });
   return response.data;
 };
 
-export const register = async (userData) => {
-  const response = await apiClient.post(`${API_URL}/register`, userData);
-  return response.data;
-};
-
-export const logout = () => {
-  localStorage.removeItem('token');
-  localStorage.removeItem('user');
+export const logoutUser = () => {
+  localStorage.removeItem("token");
 };

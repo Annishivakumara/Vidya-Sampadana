@@ -1,4 +1,4 @@
 package com.vidyasampadana.iamservice.services;
 
-public class AuthService {
+public class CustomUserDetailsService {
 }
