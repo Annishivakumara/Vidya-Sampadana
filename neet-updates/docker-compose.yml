@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+
+  mysql:
+    image: mysql:8.0
+    container_name: neet-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Anni@2005
+      MYSQL_DATABASE: neet_updates_db
+    ports:
+      - "3307:3306"
+    volumes:
+      - neet_mysql_data:/var/lib/mysql
+    networks:
+      - neet-network
+
+  neet-updates:
+    build: .
+    container_name: neet-updates-service
+    restart: always
+    ports:
+      - "8084:8084"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/neet_updates_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: Anni@2005
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_PROFILES_ACTIVE: prod
+    depends_on:
+      - mysql
+    networks:
+      - neet-network
+
+volumes:
+  neet_mysql_data:
+
+networks:
+  neet-network:
+    driver: bridge

@@ -1,20 +1,21 @@
 package com.vidyasampadana.student_service.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Table(name = "student_parent_info")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class StudentParentInfo {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "parent_id") // <-- match DB column
+        @EqualsAndHashCode.Include
         private Long parentId;
 
         @Embedded

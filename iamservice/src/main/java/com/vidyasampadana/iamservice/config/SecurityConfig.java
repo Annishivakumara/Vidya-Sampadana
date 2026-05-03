@@ -1,5 +1,6 @@
 package com.vidyasampadana.iamservice.config;
 
+<<<<<<< HEAD
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -47,4 +48,10 @@ public class SecurityConfig {
                                 .formLogin(AbstractHttpConfigurer::disable);
                         return http.build();
     }
+=======
+
+public class SecurityConfig {
+
+
+>>>>>>> sub_me/main
 }

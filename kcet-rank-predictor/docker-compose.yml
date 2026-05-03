@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  kcet-rank-predictor:
+    build: .
+    container_name: kcet-rank-predictor
+    ports:
+      - "8087:8087"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/kcet_rank_predictor_db
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: Anni@2005
+    depends_on:
+      - mysql-db
+    networks:
+      - vidya-network
+
+  mysql-db:
+    image: mysql:8.0
+    container_name: kcet-rank-predictor-db
+    environment:
+      MYSQL_ROOT_PASSWORD: Anni@2005
+      MYSQL_DATABASE: kcet_rank_predictor_db
+    ports:
+      - "3307:3306"
+    networks:
+      - vidya-network
+
+networks:
+  vidya-network:
+    external: true
+

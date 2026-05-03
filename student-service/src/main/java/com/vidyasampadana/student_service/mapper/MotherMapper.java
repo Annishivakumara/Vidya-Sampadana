@@ -5,7 +5,7 @@ import com.vidyasampadana.student_service.entity.StudentMotherInfo;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 
-@Mapper(componentModel =  "spring")
+@Mapper(componentModel = "spring")
 public interface MotherMapper {
     StudentMotherInfo toEntity(StudentMotherInfoDTO dto);
     StudentMotherInfoDTO toDto(StudentMotherInfo entity);

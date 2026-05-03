@@ -1,5 +1,6 @@
 package com.vidyasampadana.iamservice.security;
 
+<<<<<<< HEAD
 import com.vidyasampadana.iamservice.entity.Role;
 import com.vidyasampadana.iamservice.entity.User;
 import io.jsonwebtoken.*;
@@ -120,5 +121,12 @@ public class JwtService {
         Claims c=parse(token).getPayload();
         return (String) c.get("email");
     }
+=======
+
+
+public class JwtService {
+
+
+>>>>>>> sub_me/main
 
 }

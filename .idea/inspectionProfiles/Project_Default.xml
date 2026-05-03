@@ -1,6 +1,10 @@
 <component name="InspectionProjectProfileManager">
   <profile version="1.0">
     <option name="myName" value="Project Default" />
+<<<<<<< HEAD
+=======
+    <inspection_tool class="JpaDataSourceORMInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+>>>>>>> sub_me/main
     <inspection_tool class="PyInterpreterInspection" enabled="false" level="WARNING" enabled_by_default="false" />
   </profile>
 </component>

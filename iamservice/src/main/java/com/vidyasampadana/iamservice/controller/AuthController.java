@@ -1,5 +1,6 @@
 package com.vidyasampadana.iamservice.controller;
 
+<<<<<<< HEAD
 import com.vidyasampadana.iamservice.dto.UserDto;
 import com.vidyasampadana.iamservice.services.AuthService;
 import lombok.AllArgsConstructor;
@@ -21,4 +22,9 @@ public class AuthController {
     public ResponseEntity<UserDto> registerUser(@RequestBody  UserDto userDto){
         return ResponseEntity.status(HttpStatus.CREATED).body(authService.registerUser(userDto));
     }
+=======
+public class AuthController {
+
+
+>>>>>>> sub_me/main
 }

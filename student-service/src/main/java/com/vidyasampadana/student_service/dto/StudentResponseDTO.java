@@ -4,16 +4,19 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class StudentResponseDTO {
+
     private Long id;
     private String studentId;
-    // Nested relationship summaries
-    private StudentContactInfoDTO contactInfoDTO;
-    private StudentParentInfoDTO parentInfoDTO;
-    private StudentAcademicProfileDTO academicProfileDTO;
-    private StudentAddressInfoDTO studentAddressInfoDTO;
-    private StudentExamScoresDTO examScoresDTO;
+
+    private StudentContactInfoDTO contactInfo;
+    private StudentParentInfoDTO parentInfo;
+    private StudentAcademicProfileDTO academicProfile;
+    private List<StudentAddressInfoDTO> addressList;
+    private List<StudentExamScoresDTO> examScores;
 }

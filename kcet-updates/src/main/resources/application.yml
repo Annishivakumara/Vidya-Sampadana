@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: payment-service
+    name: Kcet-service
 
   datasource:
     url: jdbc:mysql://localhost:3306/vidya_sampadana_db?createDatabaseIfNotExist=true

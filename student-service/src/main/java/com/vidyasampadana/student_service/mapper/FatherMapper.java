@@ -7,7 +7,7 @@ import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring")
 public interface FatherMapper {
-    StudentFatherInfo toEntity(StudentFatherInfoDTO dto);  // dto converting to Entity
-    StudentFatherInfoDTO toDto(StudentFatherInfo entity); // entity conveting to dto
+    StudentFatherInfo toEntity(StudentFatherInfoDTO dto);
+    StudentFatherInfoDTO toDto(StudentFatherInfo entity);
     void updateFromDto(StudentFatherInfoDTO dto, @MappingTarget StudentFatherInfo entity);
 }

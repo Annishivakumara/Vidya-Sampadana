@@ -1,16 +1,18 @@
 package com.vidyasampadana.student_service.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class StudentExamScoresDTO {
+    @NotBlank(message = "Exam name is required")
     private String examName;
     private LocalDate examDate;
     private String examType;
@@ -27,9 +29,11 @@ public class StudentExamScoresDTO {
     private BigDecimal subject3Score;
     private BigDecimal subject3OutOf;
 
+
+    @NotNull(message = "Total score is required")
     private BigDecimal totalScore;
     private BigDecimal totalMarks;
-    private BigDecimal percentage;
+
     private Integer examRank;
 
 }

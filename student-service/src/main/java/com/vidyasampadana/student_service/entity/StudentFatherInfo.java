@@ -13,31 +13,35 @@ import lombok.*;
 public class StudentFatherInfo {
 
 
-    @Column(name = "fatherName", length = 255, nullable = false)
+    @Column(name = "father_name", length = 255, nullable = false)
     private String name;
 
-    @Column(name = "fatherPhone", length = 20)
+    @Column(name = "father_phone", length = 20)
     private String phone;
 
-    @Column(name = "fatherEmail", length = 255)
+    @Column(name = "father_email", length = 255)
     private String email;
 
-    @Column(name = "fatherOccupation", length = 100)
+    @Column(name = "father_occupation", length = 100)
     private String occupation;
 
-    @Column(name = "fatherCompany", length = 255)
+    @Column(name = "father_company", length = 255)
     private String company;
 
-    @Column(name = "fatherDesignation", length = 100)
+    @Column(name = "father_designation", length = 100)
     private String designation;
 
-    @Column(name = "fatherAge")
+    @Column(name = "father_age")
     private Integer age;
 
-    @Column(name = "fatherQualification", length = 100)
+    @Column(name = "father_qualification", length = 100)
     private String qualification;
 
+<<<<<<< HEAD
     @Column(name = "father_Is_alive", columnDefinition = "BOOLEAN DEFAULT TRUE")
+=======
+    @Column(name = "father_is_alive", columnDefinition = "BOOLEAN DEFAULT TRUE")
+>>>>>>> sub_me/main
     private Boolean isAlive = true;
 
 }

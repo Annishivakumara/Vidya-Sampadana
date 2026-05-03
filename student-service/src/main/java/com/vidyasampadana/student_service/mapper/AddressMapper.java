@@ -8,10 +8,12 @@ import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring")
 public interface AddressMapper {
+
     @Mapping(target = "addressId", ignore = true)
     StudentAddressInfo toEntity(StudentAddressInfoDTO dto);
 
     StudentAddressInfoDTO toDto(StudentAddressInfo entity);
+
     @Mapping(target = "addressId", ignore = true)
     void updateFromDto(StudentAddressInfoDTO dto, @MappingTarget StudentAddressInfo entity);
 }

@@ -1,5 +1,6 @@
 package com.vidyasampadana.iamservice.security;
 
+<<<<<<< HEAD
 import com.vidyasampadana.iamservice.helper.UserHelper;
 import com.vidyasampadana.iamservice.repository.UserRepository;
 import io.jsonwebtoken.Claims;
@@ -82,3 +83,10 @@ public class JwtAuthenticationFilter  extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
  }
+=======
+
+public class JwtAuthenticationFilter   {
+
+
+    }
+>>>>>>> sub_me/main

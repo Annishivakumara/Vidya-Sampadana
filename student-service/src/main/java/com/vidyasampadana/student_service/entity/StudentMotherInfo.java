@@ -12,28 +12,28 @@ import lombok.*;
 @NoArgsConstructor
 public class StudentMotherInfo {
 
-    @Column(name = "motherName", length = 255, nullable = false)
+    @Column(name = "mother_name", length = 255, nullable = false)
     private String name;
 
-    @Column(name = "motherPhone", length = 20)
+    @Column(name = "mother_phone", length = 20)
     private String phone;
 
-    @Column(name = "motherEmail", length = 255)
+    @Column(name = "mother_email", length = 255)
     private String email;
 
-    @Column(name = "motherOccupation", length = 100)
+    @Column(name = "mother_occupation", length = 100)
     private String occupation;
 
-    @Column(name = "motherCompany", length = 255)
+    @Column(name = "mother_company", length = 255)
     private String company;
 
-    @Column(name = "motherDesignation", length = 100)
+    @Column(name = "mother_designation", length = 100)
     private String designation;
 
-    @Column(name = "motherAge")
+    @Column(name = "mother_age")
     private Integer age;
 
-    @Column(name = "motherQualification", length = 100)
+    @Column(name = "mother_qualification", length = 100)
     private String qualification;
 
     @Column(name = "mother_is_alive", columnDefinition = "BOOLEAN DEFAULT TRUE")

@@ -4,7 +4,7 @@ server:
 spring:
   # Database Connection
   datasource:
-    url: jdbc:mysql://localhost:3306/vidya_auth
+    url: jdbc:mysql://localhost:3306/vidya_auth2
     username: root
     password: Anni@2005
 

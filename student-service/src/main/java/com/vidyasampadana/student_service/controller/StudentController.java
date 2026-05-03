@@ -6,7 +6,14 @@ import com.vidyasampadana.student_service.service.StudentService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+<<<<<<< HEAD
 import lombok.AllArgsConstructor;
+=======
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import lombok.AllArgsConstructor;
+import org.springframework.data.web.PageableDefault;
+>>>>>>> sub_me/main
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,10 +37,22 @@ public class StudentController {
     }
 
     @GetMapping
-    @Operation(summary = "getting All Students ")
-    public ResponseEntity<List<StudentResponseDTO>> getAllStudent(){
-        List<StudentResponseDTO> responsedtos= studentService.getAllStudents();
-        return ResponseEntity.ok(responsedtos);
+    @Operation(summary = "Get all students (paginated)")
+    public ResponseEntity<Page<StudentResponseDTO>> getAllStudents(
+            @PageableDefault(page = 0, size = 10) Pageable pageable) {
+
+        Page<StudentResponseDTO> responsePage = studentService.getAllStudents(pageable);
+        return ResponseEntity.ok(responsePage);
+    }
+
+    @GetMapping("/search")
+    @Operation(summary = "Search students by first name")
+    public ResponseEntity<Page<StudentResponseDTO>> getStudentsByName(
+            @RequestParam String name,
+            @PageableDefault(page = 0, size = 10) Pageable pageable) {
+
+        Page<StudentResponseDTO> responsePage = studentService.getStudentsByName(name, pageable);
+        return ResponseEntity.ok(responsePage);
     }
 
     @GetMapping("/{studentId}")
@@ -49,8 +68,14 @@ public class StudentController {
     }
 
     @DeleteMapping("/{studentId}")
-    public ResponseEntity<Void> deletestudent(@PathVariable String studentId){
+    public ResponseEntity<Void> deleteStudent(@PathVariable String studentId){
         studentService.deleteStudentByStudentId(studentId);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/count")
+    @Operation(summary = "Get total number of students")
+    public ResponseEntity<Long> countStudents() {
+        return ResponseEntity.ok(studentService.countStudents());
     }
 }

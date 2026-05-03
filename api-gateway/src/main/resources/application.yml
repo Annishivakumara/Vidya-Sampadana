@@ -1,0 +1,84 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: student-service
+          uri: lb://student-service
+          predicates:
+            - Path=/api/student/**
+          filters:
+            - StripPrefix=0
+
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/api/user/**
+          filters:
+            - StripPrefix=0
+
+        - id: iamservice
+          uri: lb://iamservice
+          predicates:
+            - Path=/api/iam/**
+          filters:
+            - StripPrefix=0
+
+        - id: notification-service
+          uri: lb://notification-service
+          predicates:
+            - Path=/api/notification/**
+          filters:
+            - StripPrefix=0
+
+        - id: payment-service
+          uri: lb://payment-service
+          predicates:
+            - Path=/api/payment/**
+          filters:
+            - StripPrefix=0
+
+        - id: kcet-updates
+          uri: lb://kcet-updates
+          predicates:
+            - Path=/api/kcet-updates/**
+          filters:
+            - StripPrefix=0
+
+        - id: neet-updates
+          uri: lb://neet-updates
+          predicates:
+            - Path=/api/neet-updates/**
+          filters:
+            - StripPrefix=0
+
+        - id: about-us-service
+          uri: lb://about-us-service
+          predicates:
+            - Path=/api/about-us/**
+          filters:
+            - StripPrefix=0
+
+        - id: kcet-rank-predictor
+          uri: lb://kcet-rank-predictor
+          predicates:
+            - Path=/api/kcet-rank-predictor/**
+          filters:
+            - StripPrefix=0
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
