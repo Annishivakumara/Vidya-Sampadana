@@ -1,17 +1,8 @@
 package com.vidyasampadana.kcetrankpredictor.service;
 
-import com.vidyasampadana.kcetrankpredictor.dto.KcetExamResultRequestDTO;
-import com.vidyasampadana.kcetrankpredictor.dto.KcetCutoffDataRequestDTO;
-import com.vidyasampadana.kcetrankpredictor.dto.KcetRankPredictionRequestDTO;
-import com.vidyasampadana.kcetrankpredictor.dto.KcetExamResultResponseDTO;
-import com.vidyasampadana.kcetrankpredictor.dto.KcetCutoffDataResponseDTO;
-import com.vidyasampadana.kcetrankpredictor.dto.KcetRankPredictionResponseDTO;
-import com.vidyasampadana.kcetrankpredictor.entity.KcetCollegePrediction;
-import com.vidyasampadana.kcetrankpredictor.entity.KcetCutoffData;
-import com.vidyasampadana.kcetrankpredictor.entity.KcetExamResult;
-import com.vidyasampadana.kcetrankpredictor.entity.KcetRankPrediction;
-import com.vidyasampadana.kcetrankpredictor.entity.ExamCategory;
-import com.vidyasampadana.kcetrankpredictor.entity.PredictionChance;
+import com.vidyasampadana.kcetrankpredictor.dto.*;
+import com.vidyasampadana.kcetrankpredictor.entity.*;
+import com.vidyasampadana.kcetrankpredictor.exception.PredictionException;
 import com.vidyasampadana.kcetrankpredictor.exception.ResourceNotFoundException;
 import com.vidyasampadana.kcetrankpredictor.mapper.KcetCutoffDataMapper;
 import com.vidyasampadana.kcetrankpredictor.mapper.KcetExamResultMapper;
@@ -20,7 +11,9 @@ import com.vidyasampadana.kcetrankpredictor.repository.KcetCutoffDataRepository;
 import com.vidyasampadana.kcetrankpredictor.repository.KcetExamResultRepository;
 import com.vidyasampadana.kcetrankpredictor.repository.KcetRankPredictionRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -30,13 +23,22 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class KcetRankPredictorServiceImpl implements KcetRankPredictorService {
 
+
+    @Value("${ml.service.url}")
+    private String mlServiceUrl;
+
+    // Databases
     private final KcetExamResultRepository examResultRepository;
     private final KcetCutoffDataRepository cutoffDataRepository;
     private final KcetRankPredictionRepository predictionRepository;
 
+    //Mapper
     private final KcetExamResultMapper examResultMapper;
     private final KcetCutoffDataMapper cutoffDataMapper;
     private final KcetRankPredictionMapper rankPredictionMapper;
+
+    //ML service Provider
+    private final RestTemplate restTemplate;
 
     @Override
     public KcetExamResultResponseDTO saveExamResult(KcetExamResultRequestDTO request) {
@@ -56,26 +58,47 @@ public class KcetRankPredictorServiceImpl implements KcetRankPredictorService {
         return cutoffDataMapper.toResponseDTO(cutoffDataRepository.save(entity));
     }
 
+
     @Override
     public KcetRankPredictionResponseDTO predictRank(KcetRankPredictionRequestDTO request) {
+
+        //  Step 1: Fetch student exam result to get actual marks
+        KcetExamResult examResult = examResultRepository
+                .findByStudentIdAndExamYearAndCategory(
+                        request.getStudentId(),
+                        request.getPredictionYear(),
+                        request.getCategory()
+                )
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Exam result not found for student: " + request.getStudentId() +
+                                " for year: " + request.getPredictionYear()
+                ));
+
+        //  Step 2: Build ML request with actual marks from DB
+        MLPredictionRequestDTO mlPredictionRequest = new MLPredictionRequestDTO(
+                examResult.getPhysicsMarks(),
+                examResult.getChemistryMarks(),
+                examResult.getMathsMarks(),
+                request.getCategory().toString()
+        );
+
+        //  Step 3: Call Python ML service
+        MLPredictionResponseDTO mlResponse = restTemplate.postForObject(
+                mlServiceUrl + "/predict",
+                mlPredictionRequest,
+                MLPredictionResponseDTO.class
+        );
+
+        if (mlResponse == null) {
+            throw new PredictionException("ML service returned null response");
+        }
+
+        // Step 4: Find eligible colleges
         List<KcetCutoffData> cutoffs = cutoffDataRepository
                 .findByCategoryAndExamYear(
                         request.getCategory(),
                         request.getPredictionYear() - 1
                 );
-
-        if (cutoffs.isEmpty()) {
-            throw new ResourceNotFoundException(
-                    "No cutoff data found for year: " + (request.getPredictionYear() - 1)
-            );
-        }
-
-        long higherCount = cutoffs.stream()
-                .filter(c -> c.getCutoffMarks() > request.getTotalMarks())
-                .count();
-
-        int predictedRankMin = (int) (higherCount * 0.85);
-        int predictedRankMax = (int) (higherCount * 1.15);
 
         List<KcetCollegePrediction> eligibleColleges = cutoffs.stream()
                 .map(cutoff -> {
@@ -83,26 +106,30 @@ public class KcetRankPredictorServiceImpl implements KcetRankPredictorService {
                     cp.setCollegeName(cutoff.getCollegeName());
                     cp.setBranchName(cutoff.getBranchName());
                     cp.setChance(calculateChance(
-                            request.getTotalMarks(),
-                            cutoff.getCutoffMarks()
+                            mlResponse.getPredicted_rank(),
+                            cutoff.getCutoffRank()
                     ));
                     return cp;
                 })
                 .collect(Collectors.toList());
 
+        // Step 5: Save prediction
         KcetRankPrediction prediction = new KcetRankPrediction();
         prediction.setStudentId(request.getStudentId());
-        prediction.setTotalMarks(request.getTotalMarks());
-        prediction.setPredictedRankMin(predictedRankMin);
-        prediction.setPredictedRankMax(predictedRankMax);
+        prediction.setTotalMarks(mlResponse.getTotal_marks());
+        prediction.setPredictedRankMin(mlResponse.getPredicted_rank_min());
+        prediction.setPredictedRankMax(mlResponse.getPredicted_rank_max());
         prediction.setCategory(request.getCategory());
         prediction.setPredictionYear(request.getPredictionYear());
         prediction.setPredictedAt(LocalDateTime.now());
         prediction.setEligibleColleges(eligibleColleges);
         eligibleColleges.forEach(c -> c.setPrediction(prediction));
 
-        return rankPredictionMapper.toResponseDTO(predictionRepository.save(prediction));
+        return rankPredictionMapper.toResponseDTO(
+                predictionRepository.save(prediction)
+        );
     }
+
 
     @Override
     public List<KcetRankPredictionResponseDTO> getPredictionHistory(String studentId) {
@@ -120,10 +147,9 @@ public class KcetRankPredictorServiceImpl implements KcetRankPredictorService {
                 .collect(Collectors.toList());
     }
 
-    private PredictionChance calculateChance(Double studentMarks, Double cutoffMarks) {
-        double diff = studentMarks - cutoffMarks;
-        if (diff >= 10) return PredictionChance.HIGH;
-        if (diff >= 0)  return PredictionChance.MEDIUM;
+    private PredictionChance calculateChance(Integer predictedRank, Integer cutoffRank) {
+        if (predictedRank <= cutoffRank * 0.85) return PredictionChance.HIGH;
+        if (predictedRank <= cutoffRank) return PredictionChance.MEDIUM;
         return PredictionChance.LOW;
     }
 }
