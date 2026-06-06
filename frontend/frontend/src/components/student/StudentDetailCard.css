@@ -1,0 +1,136 @@
+.sd-container {
+  display: flex;
+  gap: 40px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  margin-top: 20px;
+}
+
+/* Left Profile Column */
+.sd-left-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #edf2f7;
+  padding-right: 40px;
+}
+
+.sd-avatar-large {
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, #1a3cff, #4f46e5);
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 15px -3px rgba(26, 60, 255, 0.2);
+}
+
+.sd-profile-name {
+  font-size: 1.6rem;
+  color: #0f172a;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 12px 0;
+}
+
+.sd-badge-container {
+  display: flex;
+  gap: 8px;
+}
+
+.sd-badge {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.sd-badge--dept {
+  background: #eff6ff;
+  color: #1e40af;
+}
+
+.sd-badge--sem {
+  background: #f0fdf4;
+  color: #166534;
+}
+
+/* Right Content Column */
+.sd-right-panel {
+  flex: 2.5;
+  display: flex;
+  flex-direction: column;
+}
+
+.sd-section-title {
+  font-size: 1.25rem;
+  color: #1e293b;
+  font-weight: 700;
+  margin: 0 0 24px 0;
+  letter-spacing: -0.02em;
+}
+
+.sd-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.sd-info-item label {
+  display: block;
+  font-size: 0.75rem;
+  color: #64748b;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.sd-info-item p {
+  font-size: 1rem;
+  color: #334155;
+  font-weight: 500;
+  margin: 0;
+  background: #f8fafc;
+  padding: 14px 16px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.sd-info-item--full {
+  grid-column: span 2;
+}
+
+.sd-email-text {
+  color: #1a3cff !important;
+}
+
+@media (max-width: 768px) {
+  .sd-container {
+    flex-direction: column;
+    padding: 24px;
+  }
+  .sd-left-panel {
+    border-right: none;
+    border-bottom: 1px solid #edf2f7;
+    padding-right: 0;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+  }
+  .sd-info-grid {
+    grid-template-columns: 1fr;
+  }
+  .sd-info-item--full {
+    grid-column: span 1;
+  }
+}

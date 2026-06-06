@@ -1,19 +1,49 @@
-import React from "react";
-import StudentList from "./components/StudentList";
-import './index.css'
+import React, { useState } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import "./index.css";
+
+import Navbar from "./components/common/navbar/Navbar";
+import Footer from "./components/common/Footer";
+import Login from "./components/common/Login";
+import HomePage from "./pages/HomePage";
+import StudentsPage from "./pages/StudentsPage";
+import About from './components/home/About';
+import StudentDetailPage from "./pages/StudentDetailPage";
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(() => {
+    return localStorage.getItem("isPrototypeLoggedIn") === "true";
+  });
 
-    return (
-        <div>
+  const handleLogin = () => {
+    localStorage.setItem("isPrototypeLoggedIn", "true");
+    setIsLoggedIn(true);
+  };
 
-            <h1>Vidya-Sampadana</h1>
+  const handleLogout = () => {
+    localStorage.removeItem("isPrototypeLoggedIn");
+    setIsLoggedIn(false);
+  };
 
-            <StudentList />
+  if (!isLoggedIn) {
+    return <Login onLogin={handleLogin} />;
+  }
 
-        </div>
-    );
+  return (
+    <div className="app-wrapper">
+      <Navbar onLogout={handleLogout} />
+      <main className="main-content">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/students" element={<StudentsPage />} />
+          <Route path="/students/:id" element={<StudentDetailPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </main>
+      <Footer />
+    </div>
+  );
 }
-
 
 export default App;

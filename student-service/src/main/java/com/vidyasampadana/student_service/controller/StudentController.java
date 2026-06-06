@@ -1,15 +1,8 @@
 package com.vidyasampadana.student_service.controller;
 
-import com.vidyasampadana.student_service.dto.StudentRequestDTO;
-import com.vidyasampadana.student_service.dto.StudentResponseDTO;
+import com.vidyasampadana.student_service.entity.Students;
 import com.vidyasampadana.student_service.service.StudentService;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.validation.Valid;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import lombok.AllArgsConstructor;
-import org.springframework.data.web.PageableDefault;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,61 +10,45 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/students")
-@AllArgsConstructor
-@CrossOrigin(origins = "http://localhost:5500")
-@Tag(name = "Student Management", description = "APIs for managing students")
+@RequestMapping("/students")
+@CrossOrigin("*")
 public class StudentController {
 
-    private  final StudentService studentService;
+    @Autowired
+    private StudentService studentService;
 
-    @PostMapping("/add")
-    @Operation(summary = "student Created ")
-    public ResponseEntity<StudentResponseDTO> createStudent(@Valid @RequestBody StudentRequestDTO requestDTO){
-        StudentResponseDTO responsedto=studentService.createStudent(requestDTO);
-        return  new ResponseEntity<>(responsedto , HttpStatus.CREATED);
+    // Add Student
+    @PostMapping
+    public ResponseEntity<Students> createStudent(@RequestBody Students student) {
+        Students createdStudent = studentService.createStudent(student);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(createdStudent);
     }
 
+    // Get All Students
     @GetMapping
-    @Operation(summary = "Get all students (paginated)")
-    public ResponseEntity<Page<StudentResponseDTO>> getAllStudents(
-            @PageableDefault(page = 0, size = 10) Pageable pageable) {
-
-        Page<StudentResponseDTO> responsePage = studentService.getAllStudents(pageable);
-        return ResponseEntity.ok(responsePage);
+    public ResponseEntity<List<Students>> getAllStudents() {
+        List<Students> students = studentService.getAllStudents();
+        return ResponseEntity.ok(students);
     }
 
-    @GetMapping("/search")
-    @Operation(summary = "Search students by first name")
-    public ResponseEntity<Page<StudentResponseDTO>> getStudentsByName(
-            @RequestParam String name,
-            @PageableDefault(page = 0, size = 10) Pageable pageable) {
-
-        Page<StudentResponseDTO> responsePage = studentService.getStudentsByName(name, pageable);
-        return ResponseEntity.ok(responsePage);
+    //Read By Id
+    @GetMapping("/{id}")
+    public ResponseEntity<Students> getStudentById(@PathVariable Long id){
+          Students student= studentService.getStudentById(id);
+          return ResponseEntity.ok(student);
     }
 
-    @GetMapping("/{studentId}")
-    public  ResponseEntity<StudentResponseDTO> getStudentById(@PathVariable  String studentId){
-        StudentResponseDTO responsedto=studentService.getStudentByStudentId(studentId);
-        return  ResponseEntity.ok(responsedto);
+    //Update Student
+    @PutMapping("/{id}")
+    public ResponseEntity<Students> updateStudent(@PathVariable Long id, @RequestBody Students updateStudent) {
+        Students student = studentService.updateStudent(id, updateStudent);
+        return ResponseEntity.ok(student);
     }
 
-    @PutMapping("/{studentId}")
-    public  ResponseEntity<StudentResponseDTO> updateStudent(@Valid @RequestBody StudentRequestDTO requestDTO , @PathVariable String studentId){
-        StudentResponseDTO studentResponsedto= studentService.updateStudentByStudentId(studentId, requestDTO);
-        return ResponseEntity.ok(studentResponsedto);
-    }
-
-    @DeleteMapping("/{studentId}")
-    public ResponseEntity<Void> deleteStudent(@PathVariable String studentId){
-        studentService.deleteStudentByStudentId(studentId);
-        return ResponseEntity.noContent().build();
-    }
-
-    @GetMapping("/count")
-    @Operation(summary = "Get total number of students")
-    public ResponseEntity<Long> countStudents() {
-        return ResponseEntity.ok(studentService.countStudents());
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteStudent(@PathVariable Long id){
+        studentService.deleteStudent(id);
+        return ResponseEntity.ok("Student Deleted Successfully");
     }
 }

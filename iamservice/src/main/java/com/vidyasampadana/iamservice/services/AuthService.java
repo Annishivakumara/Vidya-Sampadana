@@ -1,4 +1,0 @@
-package com.vidyasampadana.iamservice.services;
-
-public class AuthService {
-}

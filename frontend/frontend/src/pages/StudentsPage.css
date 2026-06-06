@@ -1,0 +1,51 @@
+.students-page {
+  padding-top: 72px; /* navbar offset */
+  min-height: 100vh;
+}
+
+.students-page__hero {
+  background: linear-gradient(135deg, #0d1b4b 0%, #1a3cff 100%);
+  padding: 56px 0 48px;
+  position: relative;
+  overflow: hidden;
+}
+.students-page__hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.students-page__hero .badge {
+  background: rgba(255,255,255,.12);
+  border-color: rgba(255,255,255,.2);
+  color: rgba(255,255,255,.9);
+  margin-bottom: 16px;
+}
+.students-page__hero .badge-dot { background: white; }
+
+.students-page__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: white;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.students-page__sub {
+  font-size: 1rem;
+  color: rgba(255,255,255,.75);
+  max-width: 480px;
+  line-height: 1.65;
+  position: relative;
+  z-index: 1;
+}
+
+.students-page__content {
+  padding-top: 40px;
+  padding-bottom: 60px;
+}

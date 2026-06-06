@@ -1,24 +1,19 @@
 package com.vidyasampadana.student_service.service;
 
-import com.vidyasampadana.student_service.dto.StudentRequestDTO;
-import com.vidyasampadana.student_service.dto.StudentResponseDTO;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+
+import com.vidyasampadana.student_service.entity.Students;
+
+import java.util.List;
 
 public interface StudentService {
 
-     StudentResponseDTO createStudent(StudentRequestDTO request);
+    Students createStudent(Students student);
 
-     StudentResponseDTO getStudentByStudentId(String studentId);
+    List<Students> getAllStudents();
 
-     // FIX: Page + Pageable imports required
-     Page<StudentResponseDTO> getAllStudents(Pageable pageable);
-     Page<StudentResponseDTO> getStudentsByName(String name, Pageable pageable);
+    Students getStudentById(Long id);
 
-     StudentResponseDTO updateStudentByStudentId(String studentId, StudentRequestDTO requestDTO);
+    Students updateStudent(Long id, Students updateStudent);
 
-     void deleteStudentByStudentId(String studentId);
-
-     boolean existsByStudentId(String studentId);
-     long countStudents();
+    void deleteStudent(Long id);
 }

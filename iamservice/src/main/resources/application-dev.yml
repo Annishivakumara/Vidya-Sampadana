@@ -18,21 +18,11 @@ spring:
         format_sql: true
     show-sql: true
 
-  cloud:
-    discovery:
-      enabled: false
-
-eureka:
-  client:
-    enabled: false
-
-
 logging:
   level:
     org.springframework.security: DEBUG
     org.hibernate: INFO
     com.vidyasampadana: DEBUG
-
 
 security:
   jwt:
