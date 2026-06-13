@@ -182,3 +182,25 @@
 @media (max-width: 480px) {
   .login-card { padding: 36px 24px; }
 }
+.login-card__register-prompt {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #64748b; /* Clean slate gray text color */
+}
+
+.login-link-btn {
+  background: none;
+  border: none;
+  color: #1a3cff; /* Matches your brand color string */
+  font-weight: 600;
+  margin-left: 0.4rem;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+  text-decoration: none;
+}
+
+.login-link-btn:hover {
+  text-decoration: underline;
+}

@@ -1,27 +1,30 @@
 import React, { useState } from "react";
 import "./Login.css";
+import { userService } from "../../services/userService";
 
-const Login = ({ onLogin }) => {
+const Login = ({ onLogin, onNavigateToRegister }) => { // 1. Accept the navigation prop
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
-    setLoading(true);
+  e.preventDefault();
+  setError("");
+  setLoading(true);
 
-    // Simulate slight delay for UX
-    await new Promise((r) => setTimeout(r, 600));
-
-    if (username === "admin" && password === "password") {
-      onLogin();
-    } else {
-      setError("Invalid username or password. Try admin / password.");
-      setLoading(false);
-    }
-  };
+  try {
+    // Hit your central service layer using the form states (rename your 'username' state to 'email')
+    const authenticatedUser = await userService.login(username, password);
+    
+    // Pass the real profile payload straight up to App.jsx state wrapper
+    onLogin(authenticatedUser);
+  } catch (err) {
+    setError(err.message || "Invalid credentials. Please register an account first.");
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="login-page">
@@ -50,15 +53,15 @@ const Login = ({ onLogin }) => {
 
         <form className="login-form" onSubmit={handleSubmit}>
           <div className="login-field">
-            <label htmlFor="username">Username</label>
+            <label htmlFor="email">Email Address</label>
             <div className="login-input-wrap">
               <svg className="login-input-icon" viewBox="0 0 20 20" fill="none">
                 <path d="M10 10a4 4 0 100-8 4 4 0 000 8zm-6 8a6 6 0 1112 0H4z" fill="currentColor"/>
               </svg>
               <input
-                id="username"
-                type="text"
-                placeholder="Enter username"
+                id="email"
+                type="email"
+                placeholder="Enter Your email"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
@@ -100,6 +103,14 @@ const Login = ({ onLogin }) => {
             )}
           </button>
         </form>
+
+        {/* 2. Added navigation redirection link */}
+        <div className="login-card__register-prompt">
+          <span>New to the platform?</span>
+          <button type="button" className="login-link-btn" onClick={onNavigateToRegister}>
+            Create an account
+          </button>
+        </div>
 
         <p className="login-card__hint">Demo credentials: <strong>admin</strong> / <strong>password</strong></p>
       </div>

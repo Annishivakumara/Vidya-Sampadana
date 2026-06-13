@@ -17,7 +17,7 @@ const Navbar = ({ onLogout }) => {
   const navLinks = [
     { label: "Home", path: "/" },
     { label: "Students", path: "/students" },
-    { label: "About Us", path: "/About" },
+    { label: "About Us", path: "/about" },
   ];
 
   return (
