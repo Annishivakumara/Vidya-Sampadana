@@ -1,15 +1,15 @@
-import axios from "axios";
+import API from "./api";
 
-const API_URL = "http://localhost:8081/students";
+const API_URL = "/student";
 
-export const getStudents = () => axios.get(API_URL);
+export const getStudents = () => API.get(API_URL);
 
-export const createStudent = (student) => axios.post(API_URL, student);
+export const createStudent = (student) => API.post(API_URL, student);
 
-export const updateStudent = (id, student) => axios.put(`${API_URL}/${id}`, student);
+export const updateStudent = (id, student) => API.put(`${API_URL}/${id}`, student);
 
-export const deleteStudent = (id) => axios.delete(`${API_URL}/${id}`);
+export const deleteStudent = (id) => API.delete(`${API_URL}/${id}`);
 
 export const getStudentById = (id) => {
-  return axios.get(`${API_URL}/${id}`);
+  return API.get(`${API_URL}/${id}`);
 };

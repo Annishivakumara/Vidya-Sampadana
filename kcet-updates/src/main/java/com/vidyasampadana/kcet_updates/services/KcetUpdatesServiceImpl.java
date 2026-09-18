@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class KcetUpdatesServiceImpl implements com.vidyasampadana.kcet_updates.service.KcetUpdatesService {
+public class KcetUpdatesServiceImpl implements KcetUpdatesService {
 
     private final KcetUpdateRepository kcetUpdatesRepository;
 
@@ -28,6 +28,7 @@ public class KcetUpdatesServiceImpl implements com.vidyasampadana.kcet_updates.s
         existing.setTitle(update.getTitle());
         existing.setDescription(update.getDescription());
         existing.setCategory(update.getCategory());
+        existing.setIsActive(update.getIsActive());
         return kcetUpdatesRepository.save(existing);
     }
 
@@ -39,6 +40,7 @@ public class KcetUpdatesServiceImpl implements com.vidyasampadana.kcet_updates.s
     @Override
     public KcetUpdates toggleActive(Long id) {
         KcetUpdates existing = findById(id);
+        existing.setIsActive(!Boolean.TRUE.equals(existing.getIsActive()));
         return kcetUpdatesRepository.save(existing);
     }
 

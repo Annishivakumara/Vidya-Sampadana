@@ -53,15 +53,15 @@ const Login = ({ onLogin, onNavigateToRegister }) => { // 1. Accept the navigati
 
         <form className="login-form" onSubmit={handleSubmit}>
           <div className="login-field">
-            <label htmlFor="email">Email Address</label>
+            <label htmlFor="username">Username</label>
             <div className="login-input-wrap">
               <svg className="login-input-icon" viewBox="0 0 20 20" fill="none">
                 <path d="M10 10a4 4 0 100-8 4 4 0 000 8zm-6 8a6 6 0 1112 0H4z" fill="currentColor"/>
               </svg>
               <input
-                id="email"
-                type="email"
-                placeholder="Enter Your email"
+                id="username"
+                type="text"
+                placeholder="Enter your username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required

@@ -4,9 +4,9 @@ server:
 spring:
   # Database Connection
   datasource:
-    url: jdbc:mysql://localhost:3306/vidya_auth2
+    url: jdbc:mysql://localhost:3306/vidya_auth2?createDatabaseIfNotExist=true&serverTimezone=UTC
     username: root
-    password: Anni@2005
+    password: root
 
   # JPA and Hibernate Configuration
   jpa:

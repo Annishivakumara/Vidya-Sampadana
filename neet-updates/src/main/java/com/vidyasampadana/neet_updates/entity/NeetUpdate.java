@@ -46,4 +46,33 @@ public class NeetUpdate {
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    public Long getId() { return id; }
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+    public String getSourceUrl() { return sourceUrl; }
+    public void setSourceUrl(String sourceUrl) { this.sourceUrl = sourceUrl; }
+    public UpdateCategory getCategory() { return category; }
+    public void setCategory(UpdateCategory category) { this.category = category; }
+    public Boolean getIsActive() { return isActive; }
+    public void setIsActive(Boolean active) { isActive = active; }
+    public Boolean getIsPinned() { return isPinned; }
+    public void setIsPinned(Boolean pinned) { isPinned = pinned; }
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public LocalDateTime getUpdatedAt() { return updatedAt; }
+
+    public static Builder builder() { return new Builder(); }
+
+    public static class Builder {
+        private final NeetUpdate value = new NeetUpdate();
+        public Builder title(String title) { value.title = title; return this; }
+        public Builder description(String description) { value.description = description; return this; }
+        public Builder sourceUrl(String sourceUrl) { value.sourceUrl = sourceUrl; return this; }
+        public Builder category(UpdateCategory category) { value.category = category; return this; }
+        public Builder isActive(Boolean active) { value.isActive = active; return this; }
+        public Builder isPinned(Boolean pinned) { value.isPinned = pinned; return this; }
+        public NeetUpdate build() { return value; }
+    }
 }

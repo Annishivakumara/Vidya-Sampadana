@@ -4,7 +4,7 @@ import com.vidyasampadana.kcet_updates.dto.KcetUpdateRequest;
 import com.vidyasampadana.kcet_updates.dto.KcetUpdateResponse;
 import com.vidyasampadana.kcet_updates.entity.KcetCategory;
 import com.vidyasampadana.kcet_updates.mapper.KcetUpdateMapper;
-import com.vidyasampadana.kcet_updates.service.KcetUpdatesService;
+import com.vidyasampadana.kcet_updates.services.KcetUpdatesService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:5173"})
 @RestController
 @RequestMapping("/api/kcet-updates")
 @RequiredArgsConstructor

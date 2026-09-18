@@ -1,4 +1,4 @@
-package com.vidyasampadana.kcet_updates.service;
+package com.vidyasampadana.kcet_updates.services;
 
 import com.vidyasampadana.kcet_updates.entity.KcetUpdates;
 import com.vidyasampadana.kcet_updates.entity.KcetCategory;
