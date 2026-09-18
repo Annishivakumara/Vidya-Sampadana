@@ -3,6 +3,8 @@ package com.vidyasampadana.about_us_service.controller;
 
 
 import com.vidyasampadana.about_us_service.entity.CoreTeamMember;
+import com.vidyasampadana.about_us_service.dto.CoreTeamMemberRequestDTO;
+import com.vidyasampadana.about_us_service.services.ICoreTeamMemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,14 +18,14 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:3000")
 public class CoreTeamMemberController {
 
-    private final CoreTeamMemberService coreTeamMemberService;
+        private final ICoreTeamMemberService coreTeamMemberService;
 
     // ─── USER ENDPOINTS (public) ────────────────────────
 
     // GET /api/about/team/public
     // → returns only active members for About Us page
     @GetMapping("/public")
-    public ResponseEntity<List<CoreTeamMember>> getActiveMembers() {
+        public ResponseEntity<?> getActiveMembers() {
         return ResponseEntity.ok(
                 coreTeamMemberService.getActiveMembers());
     }
@@ -33,7 +35,7 @@ public class CoreTeamMemberController {
     // GET /api/about/team/admin
     // → returns ALL members including hidden
     @GetMapping("/admin")
-    public ResponseEntity<List<CoreTeamMember>> getAllMembers() {
+        public ResponseEntity<?> getAllMembers() {
         return ResponseEntity.ok(
                 coreTeamMemberService.getAllMembers());
     }
@@ -41,7 +43,7 @@ public class CoreTeamMemberController {
     // GET /api/about/team/admin/{id}
     // → get single member for edit form
     @GetMapping("/admin/{id}")
-    public ResponseEntity<CoreTeamMember> getMemberById(
+        public ResponseEntity<?> getMemberById(
             @PathVariable Long id) {
         return ResponseEntity.ok(
                 coreTeamMemberService.getMemberById(id));
@@ -50,8 +52,8 @@ public class CoreTeamMemberController {
     // POST /api/about/team/admin
     // → add new core team member
     @PostMapping("/admin")
-    public ResponseEntity<CoreTeamMember> addMember(
-            @RequestBody CoreTeamMember member) {
+    public ResponseEntity<?> addMember(
+            @RequestBody CoreTeamMemberRequestDTO member) {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(coreTeamMemberService.addMember(member));
@@ -60,9 +62,9 @@ public class CoreTeamMemberController {
     // PUT /api/about/team/admin/{id}
     // → edit existing member
     @PutMapping("/admin/{id}")
-    public ResponseEntity<CoreTeamMember> updateMember(
+    public ResponseEntity<?> updateMember(
             @PathVariable Long id,
-            @RequestBody CoreTeamMember updated) {
+            @RequestBody CoreTeamMemberRequestDTO updated) {
         return ResponseEntity.ok(
                 coreTeamMemberService.updateMember(id, updated));
     }
@@ -70,7 +72,7 @@ public class CoreTeamMemberController {
     // PATCH /api/about/team/admin/{id}/toggle
     // → hide or show member without deleting
     @PatchMapping("/admin/{id}/toggle")
-    public ResponseEntity<CoreTeamMember> toggleActive(
+        public ResponseEntity<?> toggleActive(
             @PathVariable Long id) {
         return ResponseEntity.ok(
                 coreTeamMemberService.toggleActive(id));

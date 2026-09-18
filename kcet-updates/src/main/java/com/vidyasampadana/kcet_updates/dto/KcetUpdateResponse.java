@@ -16,5 +16,6 @@ public class KcetUpdateResponse {
     private String title;
     private String description;
     private KcetCategory category;
+    private Boolean isActive;
     private LocalDateTime createdAt;    // users see when it was posted
 }

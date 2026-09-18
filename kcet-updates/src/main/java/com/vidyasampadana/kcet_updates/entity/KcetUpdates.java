@@ -29,8 +29,9 @@ import java.time.LocalDateTime;
         @Column(nullable = false, length = 30)
         private KcetCategory category;
 
+        @Builder.Default
         @Column(nullable = false)
-        private Boolean isActive =true;
+        private Boolean isActive = true;
 
         @CreationTimestamp
         @Column(updatable = false)

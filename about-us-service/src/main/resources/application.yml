@@ -9,7 +9,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/vidya_sampadana_db?createDatabaseIfNotExist=true
     username: root
-    password: Anni@2005
+    password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   # 2. JPA/Hibernate Settings

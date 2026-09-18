@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import About from '../../home/About';
 import "./Navbar.css";
 
-const Navbar = ({ onLogout }) => {
+const Navbar = ({ user, onLogout }) => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
@@ -14,6 +13,18 @@ const Navbar = ({ onLogout }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const displayName = user?.name || user?.email || "User";
+  const initials = displayName
+    .split(" ")
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase() || "")
+    .join("") || "U";
+
+  const roleLabel = user?.role
+    ? user.role.charAt(0).toUpperCase() + user.role.slice(1).toLowerCase()
+    : "Member";
+
   const navLinks = [
     { label: "Home", path: "/" },
     { label: "Students", path: "/students" },
@@ -23,7 +34,6 @@ const Navbar = ({ onLogout }) => {
   return (
     <header className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}>
       <div className="navbar__inner container">
-        {/* Logo */}
         <Link to="/" className="navbar__logo">
           <span className="navbar__logo-icon">
             <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -37,7 +47,6 @@ const Navbar = ({ onLogout }) => {
           </span>
         </Link>
 
-        {/* Desktop Nav */}
         <nav className="navbar__links" aria-label="Main navigation">
           {navLinks.map((link) => (
             <Link
@@ -50,8 +59,18 @@ const Navbar = ({ onLogout }) => {
           ))}
         </nav>
 
-        {/* Actions */}
         <div className="navbar__actions">
+          {user && (
+            <div className="navbar__user-card" aria-label="Current user">
+              <span className="navbar__avatar">{initials}</span>
+              <div className="navbar__user-meta">
+                <span className="navbar__user-label">Welcome</span>
+                <strong>{displayName}</strong>
+                <small>{roleLabel}</small>
+              </div>
+            </div>
+          )}
+
           <button className="navbar__logout-btn" onClick={onLogout}>
             <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M13 7l3 3m0 0l-3 3m3-3H7m6-7H5a2 2 0 00-2 2v12a2 2 0 002 2h8" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
@@ -59,7 +78,6 @@ const Navbar = ({ onLogout }) => {
             Logout
           </button>
 
-          {/* Hamburger */}
           <button
             className={`navbar__hamburger ${menuOpen ? "open" : ""}`}
             onClick={() => setMenuOpen(!menuOpen)}
@@ -70,9 +88,18 @@ const Navbar = ({ onLogout }) => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       {menuOpen && (
         <div className="navbar__mobile-menu">
+          {user && (
+            <div className="navbar__mobile-user">
+              <span className="navbar__avatar navbar__avatar--mobile">{initials}</span>
+              <div>
+                <strong>{displayName}</strong>
+                <small>{roleLabel}</small>
+              </div>
+            </div>
+          )}
+
           {navLinks.map((link) => (
             <Link
               key={link.path}

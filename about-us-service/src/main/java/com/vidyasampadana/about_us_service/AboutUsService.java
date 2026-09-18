@@ -1,4 +1,4 @@
-package com.vidyasampadana.mentor_service;
+package com.vidyasampadana.about_us_service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class AboutUsService {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MentorServiceApplication.class, args);
+		SpringApplication.run(AboutUsService.class, args);
 	}
 
 }

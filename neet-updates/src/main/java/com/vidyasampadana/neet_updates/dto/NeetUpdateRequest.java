@@ -25,4 +25,11 @@ public class NeetUpdateRequest {
     public Boolean isActive = true;
 
     public Boolean isPinned = false;
+
+    public String getTitle() { return title; }
+    public String getDescription() { return description; }
+    public String getSourceUrl() { return sourceUrl; }
+    public UpdateCategory getCategory() { return category; }
+    public Boolean getIsActive() { return isActive; }
+    public Boolean getIsPinned() { return isPinned; }
 }

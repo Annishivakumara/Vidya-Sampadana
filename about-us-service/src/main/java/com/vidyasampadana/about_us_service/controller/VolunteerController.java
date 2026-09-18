@@ -1,6 +1,8 @@
 package com.vidyasampadana.about_us_service.controller;
 
 import com.vidyasampadana.about_us_service.entity.Volunteer;
+import com.vidyasampadana.about_us_service.dto.VolunteerRequestDTO;
+import com.vidyasampadana.about_us_service.services.IVolunteerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,14 +16,14 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:3000")
 public class VolunteerController {
 
-    private final VolunteerService volunteerService;
+        private final IVolunteerService volunteerService;
 
     // ─── USER ENDPOINTS (public) ────────────────────────
 
     // GET /api/about/volunteers/public
     // → returns only active volunteers
     @GetMapping("/public")
-    public ResponseEntity<List<Volunteer>> getActiveVolunteers() {
+        public ResponseEntity<?> getActiveVolunteers() {
         return ResponseEntity.ok(
                 volunteerService.getActiveVolunteers());
     }
@@ -29,7 +31,7 @@ public class VolunteerController {
     // GET /api/about/volunteers/public/filter?domain=TECH
     // → filter active volunteers by domain
     @GetMapping("/public/filter")
-    public ResponseEntity<List<Volunteer>> getByDomain(
+        public ResponseEntity<?> getByDomain(
             @RequestParam Volunteer.Domain domain) {
         return ResponseEntity.ok(
                 volunteerService.getActiveByDomain(domain));
@@ -40,7 +42,7 @@ public class VolunteerController {
     // GET /api/about/volunteers/admin
     // → returns ALL volunteers including hidden
     @GetMapping("/admin")
-    public ResponseEntity<List<Volunteer>> getAllVolunteers() {
+        public ResponseEntity<?> getAllVolunteers() {
         return ResponseEntity.ok(
                 volunteerService.getAllVolunteers());
     }
@@ -48,7 +50,7 @@ public class VolunteerController {
     // GET /api/about/volunteers/admin/{id}
     // → get single volunteer for edit form
     @GetMapping("/admin/{id}")
-    public ResponseEntity<Volunteer> getVolunteerById(
+        public ResponseEntity<?> getVolunteerById(
             @PathVariable Long id) {
         return ResponseEntity.ok(
                 volunteerService.getVolunteerById(id));
@@ -57,8 +59,8 @@ public class VolunteerController {
     // POST /api/about/volunteers/admin
     // → add new volunteer
     @PostMapping("/admin")
-    public ResponseEntity<Volunteer> addVolunteer(
-            @RequestBody Volunteer volunteer) {
+    public ResponseEntity<?> addVolunteer(
+            @RequestBody VolunteerRequestDTO volunteer) {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(volunteerService.addVolunteer(volunteer));
@@ -67,9 +69,9 @@ public class VolunteerController {
     // PUT /api/about/volunteers/admin/{id}
     // → edit existing volunteer
     @PutMapping("/admin/{id}")
-    public ResponseEntity<Volunteer> updateVolunteer(
+    public ResponseEntity<?> updateVolunteer(
             @PathVariable Long id,
-            @RequestBody Volunteer updated) {
+            @RequestBody VolunteerRequestDTO updated) {
         return ResponseEntity.ok(
                 volunteerService.updateVolunteer(id, updated));
     }
@@ -77,7 +79,7 @@ public class VolunteerController {
     // PATCH /api/about/volunteers/admin/{id}/toggle
     // → hide or show volunteer without deleting
     @PatchMapping("/admin/{id}/toggle")
-    public ResponseEntity<Volunteer> toggleActive(
+        public ResponseEntity<?> toggleActive(
             @PathVariable Long id) {
         return ResponseEntity.ok(
                 volunteerService.toggleActive(id));

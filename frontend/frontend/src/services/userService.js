@@ -1,21 +1,20 @@
 import API from './api';
 
 export const userService = {
-    // Simulate hitting an auth endpoint or validating user records
-    login: async (email, password) => {
-        // For now, we fetch all users to find a match for our prototype validation loop.
-        // Once your auth backend microservice is up, this will simply map to: API.post('/auth/login', { email, password })
-        const response = await API.get('/users');
-        const users = response.data;
-        
-        // Find the user matching the provided email credentials
-        const matchedUser = users.find(u => u.email === email && password !== ""); 
-        
-        if (!matchedUser) {
-            throw new Error("Invalid email or password combination.");
+    login: async (username, password) => {
+        try {
+            await API.post('/auth/login', { username, password });
+        } catch (error) {
+            const message = error.response?.data;
+            throw new Error(typeof message === 'string' ? message : 'Invalid username or password.');
         }
-        
-        return matchedUser; // Returns the secure UserResponseDto (no password exposed!)
+
+        return {
+            username,
+            name: username,
+            email: username,
+            role: 'member',
+        };
     },
 
     getUserById: async (id) => {

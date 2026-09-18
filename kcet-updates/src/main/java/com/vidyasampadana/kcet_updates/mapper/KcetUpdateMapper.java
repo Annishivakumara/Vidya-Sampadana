@@ -14,6 +14,7 @@ public class KcetUpdateMapper {
                 .title(request.getTitle())
                 .description(request.getDescription())
                 .category(request.getCategory())
+                .isActive(request.isActive())
                 .build();
     }
 
@@ -24,6 +25,7 @@ public class KcetUpdateMapper {
                 .title(entity.getTitle())
                 .description(entity.getDescription())
                 .category(entity.getCategory())
+                .isActive(entity.getIsActive())
                 .createdAt(entity.getCreatedAt())
                 .build();
     }
@@ -33,6 +35,6 @@ public class KcetUpdateMapper {
         existing.setTitle(request.getTitle());
         existing.setDescription(request.getDescription());
         existing.setCategory(request.getCategory());
-         // ✅ setActive() not setIsActive()
+        existing.setIsActive(request.isActive());
     }
 }
