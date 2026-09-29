@@ -14,11 +14,8 @@ const Login = ({ onLogin, onNavigateToRegister }) => { // 1. Accept the navigati
   setLoading(true);
 
   try {
-    // Hit your central service layer using the form states (rename your 'username' state to 'email')
-    const authenticatedUser = await userService.login(username, password);
-    
-    // Pass the real profile payload straight up to App.jsx state wrapper
-    onLogin(authenticatedUser);
+    const session = await userService.login(username, password);
+    onLogin(session);
   } catch (err) {
     setError(err.message || "Invalid credentials. Please register an account first.");
   } finally {
@@ -112,7 +109,7 @@ const Login = ({ onLogin, onNavigateToRegister }) => { // 1. Accept the navigati
           </button>
         </div>
 
-        <p className="login-card__hint">Demo credentials: <strong>admin</strong> / <strong>password</strong></p>
+        <p className="login-card__hint">Use the account credentials you registered.</p>
       </div>
     </div>
   );

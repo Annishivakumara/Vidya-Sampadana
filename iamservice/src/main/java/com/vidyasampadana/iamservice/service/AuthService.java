@@ -1,45 +1,58 @@
 package com.vidyasampadana.iamservice.service;
 
 
+import com.vidyasampadana.iamservice.dto.AuthResponse;
 import com.vidyasampadana.iamservice.model.User;
 import com.vidyasampadana.iamservice.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class AuthService {
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final TokenService tokenService;
 
-    @Autowired
-    private UserRepository userRepository;
-
-    // 1. Business Logic for Sign Up
-    public String registerUser(User newUser) {
-        if (userRepository.existsById(newUser.getUsername())) {
-            return "USERNAME_TAKEN";
-        }
-
-        // This is exactly where you will add password hashing (BCrypt) later!
-        userRepository.save(newUser);
-        return "SUCCESS";
+    public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder, TokenService tokenService) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.tokenService = tokenService;
     }
 
-    // 2. Business Logic for Login
-    public String authenticateUser(String username, String password) {
-        Optional<User> userOptional = userRepository.findById(username);
-
-        if (userOptional.isEmpty()) {
-            return "USER_NOT_FOUND";
+    public AuthResponse registerUser(User newUser) {
+        if (newUser.getUsername() == null || newUser.getUsername().isBlank()
+                || newUser.getEmail() == null || newUser.getEmail().isBlank()
+                || newUser.getPassword() == null || newUser.getPassword().length() < 8) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                    "Username, email, and a password of at least 8 characters are required.");
+        }
+        if (userRepository.existsById(newUser.getUsername()) || userRepository.existsByEmail(newUser.getEmail())) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Username or email is already registered.");
         }
 
-        User existingUser = userOptional.get();
+        newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
+        return createAuthResponse(userRepository.save(newUser));
+    }
 
-        // This is exactly where you will eventually generate a JWT token!
-        if (existingUser.getPassword().equals(password)) {
-            return "SUCCESS";
-        } else {
-            return "INVALID_CREDENTIALS";
+    public AuthResponse authenticateUser(String usernameOrEmail, String password) {
+        User user = userRepository.findById(usernameOrEmail)
+                .or(() -> userRepository.findByEmail(usernameOrEmail))
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid username or password."));
+
+        if (!passwordEncoder.matches(password, user.getPassword())) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid username or password.");
         }
+        return createAuthResponse(user);
+    }
+
+    private AuthResponse createAuthResponse(User user) {
+        return new AuthResponse(
+                tokenService.createAccessToken(user.getUsername(), user.getEmail()),
+                "Bearer",
+                tokenService.getAccessTtlSeconds(),
+                new AuthResponse.UserProfile(user.getUsername(), user.getEmail())
+        );
     }
 }

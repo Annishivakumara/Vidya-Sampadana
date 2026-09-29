@@ -10,22 +10,30 @@ import HomePage from "./pages/HomePage";
 import StudentsPage from "./pages/StudentsPage";
 import About from './components/home/About';
 import StudentDetailPage from "./pages/StudentDetailPage";
+import { userService } from "./services/userService";
 
 function App() {
   const [user, setUser] = useState(() => {
-    const savedUser = localStorage.getItem("currentUser");
+    const savedUser = sessionStorage.getItem("currentUser");
     return savedUser ? JSON.parse(savedUser) : null;
   });
 
   const [authView, setAuthView] = useState("login"); 
 
-  const handleLogin = (authenticatedUser) => {
-    localStorage.setItem("currentUser", JSON.stringify(authenticatedUser));
-    setUser(authenticatedUser);
+  const handleLogin = (session) => {
+    sessionStorage.setItem("accessToken", session.accessToken);
+    sessionStorage.setItem("currentUser", JSON.stringify(session.user));
+    setUser(session.user);
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem("currentUser");
+  const handleLogout = async () => {
+    try {
+      await userService.logout();
+    } catch {
+      // The local session must still be cleared if the server is unavailable.
+    }
+    sessionStorage.removeItem("accessToken");
+    sessionStorage.removeItem("currentUser");
     setUser(null);
   };
 
@@ -37,9 +45,6 @@ function App() {
       <Register onNavigateToLogin={() => setAuthView("login")} />
     );
   }
-
-  // Debug: Log user object to check structure
-  console.log("Current User Object:", user);
 
   return (
     <div className="app-wrapper">

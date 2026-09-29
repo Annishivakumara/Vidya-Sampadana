@@ -4,9 +4,9 @@ server:
 spring:
   # Database Connection
   datasource:
-    url: jdbc:mysql://localhost:3306/vidya_auth2?createDatabaseIfNotExist=true&serverTimezone=UTC
-    username: root
-    password: root
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
 
   # JPA and Hibernate Configuration
   jpa:
@@ -26,7 +26,7 @@ logging:
 
 security:
   jwt:
-    secret: ${JWT_SECRET:mySuperSecretKey_2026_@#$_VeryLongString_12345}
+    secret: ${JWT_SECRET}
     issuer: ${JWT_ISSUER:api.substring.com}
     access-ttl-seconds: ${JWT_ACCESS_TTL_SECONDS:3600}
     refresh-ttl-seconds: ${JWT_REFRESH_TTl_SECONDS:86400}

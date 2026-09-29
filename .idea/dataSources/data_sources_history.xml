@@ -5,7 +5,7 @@
       <driver-ref>h2.unified</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
-      <remarks>C:/gitstudent/vidya-sampadana/student-service/src/main/resources/application-test.properties</remarks>
+      <remarks>C:/Users/student/IdeaProjects/Vidya-Sampadana/student-service/src/main/resources/application-test.properties</remarks>
       <jdbc-driver>org.h2.Driver</jdbc-driver>
       <jdbc-url>jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1</jdbc-url>
       <user-name>sa</user-name>
@@ -19,7 +19,7 @@
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
-      <remarks>C:/gitstudent/vidya-sampadana/kcet-rank-predictor/src/main/resources/application.yaml</remarks>
+      <remarks>C:/Users/student/IdeaProjects/Vidya-Sampadana/kcet-rank-predictor/src/main/resources/application.yaml</remarks>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/kcet_rank_predictor?createDatabaseIfNotExist=true</jdbc-url>
       <user-name>root</user-name>
@@ -33,7 +33,7 @@
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
-      <remarks>C:/gitstudent/vidya-sampadana/student-service/src/main/resources/application.properties</remarks>
+      <remarks>C:/Users/student/IdeaProjects/Vidya-Sampadana/student-service/src/main/resources/application.properties</remarks>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/vidya_sampadana_db?createDatabaseIfNotExist=true</jdbc-url>
       <user-name>root</user-name>
@@ -47,7 +47,7 @@
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
-      <remarks>C:/gitstudent/vidya-sampadana/iamservice/src/main/resources/application-dev.yml</remarks>
+      <remarks>C:/Users/student/IdeaProjects/Vidya-Sampadana/iamservice/src/main/resources/application-dev.yml</remarks>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/vidya_auth2</jdbc-url>
       <user-name>root</user-name>
@@ -61,7 +61,7 @@
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
-      <remarks>C:/gitstudent/vidya-sampadana/student-service/src/main/resources/application-dev.properties</remarks>
+      <remarks>C:/Users/student/IdeaProjects/Vidya-Sampadana/student-service/src/main/resources/application-dev.properties</remarks>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/vidya_sampadana_db?createDatabaseIfNotExist=true&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true&amp;useSSL=false</jdbc-url>
       <user-name>root</user-name>
@@ -75,7 +75,7 @@
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
-      <remarks>C:/gitstudent/vidya-sampadana/user-service/src/main/resources/application.yml</remarks>
+      <remarks>C:/Users/student/IdeaProjects/Vidya-Sampadana/user-service/src/main/resources/application.yml</remarks>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/vidya_sampadana_db?createDatabaseIfNotExist=true</jdbc-url>
       <user-name>root</user-name>
@@ -89,7 +89,7 @@
       <driver-ref>mongo.4</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
-      <remarks>C:/gitstudent/vidya-sampadana/analytics-service/src/main/resources/application.yml</remarks>
+      <remarks>C:/Users/student/IdeaProjects/Vidya-Sampadana/analytics-service/src/main/resources/application.yml</remarks>
       <jdbc-driver>com.dbschema.MongoJdbcDriver</jdbc-driver>
       <jdbc-url>mongodb://localhost:27017/analytics_db</jdbc-url>
       <schema-mapping />
@@ -102,7 +102,7 @@
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
-      <remarks>C:/gitstudent/vidya-sampadana/kcet-updates/src/main/resources/application.yml</remarks>
+      <remarks>C:/Users/student/IdeaProjects/Vidya-Sampadana/kcet-updates/src/main/resources/application.yml</remarks>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/vidya_sampadana_db?createDatabaseIfNotExist=true</jdbc-url>
       <user-name>root</user-name>
@@ -116,7 +116,7 @@
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
-      <remarks>C:/gitstudent/vidya-sampadana/about-us-service/src/main/resources/application.yml</remarks>
+      <remarks>C:/Users/student/IdeaProjects/Vidya-Sampadana/about-us-service/src/main/resources/application.yml</remarks>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/vidya_sampadana_db?createDatabaseIfNotExist=true</jdbc-url>
       <user-name>root</user-name>
@@ -130,7 +130,7 @@
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
-      <remarks>C:/gitstudent/vidya-sampadana/notification-service/src/main/resources/application.yml</remarks>
+      <remarks>C:/Users/student/IdeaProjects/Vidya-Sampadana/notification-service/src/main/resources/application.yml</remarks>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/vidya_sampadana_db?createDatabaseIfNotExist=true</jdbc-url>
       <user-name>root</user-name>
@@ -144,7 +144,7 @@
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
-      <remarks>C:/gitstudent/vidya-sampadana/neet-updates/src/main/resources/application.properties</remarks>
+      <remarks>C:/Users/student/IdeaProjects/Vidya-Sampadana/neet-updates/src/main/resources/application.properties</remarks>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/neet_updates_db?createDatabaseIfNotExist=true&amp;useSSL=false&amp;serverTimezone=UTC</jdbc-url>
       <jdbc-additional-properties>

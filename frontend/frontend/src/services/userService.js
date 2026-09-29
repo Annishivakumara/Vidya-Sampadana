@@ -3,19 +3,21 @@ import API from './api';
 export const userService = {
     login: async (username, password) => {
         try {
-            await API.post('/auth/login', { username, password });
+            const response = await API.post('/auth/login', { username, password });
+            if (!response.data?.accessToken || !response.data?.user) {
+                throw new Error('The login service returned an invalid session.');
+            }
+            return response.data;
         } catch (error) {
+            if (error.message === 'The login service returned an invalid session.') {
+                throw error;
+            }
             const message = error.response?.data;
             throw new Error(typeof message === 'string' ? message : 'Invalid username or password.');
         }
-
-        return {
-            username,
-            name: username,
-            email: username,
-            role: 'member',
-        };
     },
+
+    logout: async () => API.post('/auth/logout'),
 
     getUserById: async (id) => {
         const response = await API.get(`/users/${id}`);
