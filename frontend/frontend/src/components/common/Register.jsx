@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { studentService } from '../../services/studentService1';
 import { volunteerService } from '../../services/volunteerService';
 import { adminService } from '../../services/adminService';
+import { userService } from '../../services/userService';
 import './Register.css';
 
-const Register = ({ onNavigateToLogin }) => {
+const Register = ({ onLogin, onNavigateToLogin }) => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -56,7 +56,13 @@ const Register = ({ onNavigateToLogin }) => {
                 data = await adminService.register(payload);
             }
 
-            setSuccessMessage(`Registration successful! Welcome, ${data.name}.`);
+            // The user service creates the IAM identity and profile as one workflow.
+            const session = await userService.login(formData.email, formData.password);
+
+            onLogin({
+                ...session,
+                user: { ...session.user, name: data.name, role: data.role }
+            });
             setFormData({ name: '', email: '', password: '', role: 'STUDENT', institutionName: '', expertise: '' });
         } catch (err) {
             // Check if the backend custom exception layer returned validation errors
@@ -64,7 +70,7 @@ const Register = ({ onNavigateToLogin }) => {
                 const backendErrors = err.response.data.validationErrors || {};
                 setErrors(backendErrors);
             } else {
-                setErrors({ global: 'Network communication error. Check your backend status layer.' });
+                setErrors({ global: err.message || 'Unable to register your account. Please try again.' });
             }
         } finally {
             setLoading(false);

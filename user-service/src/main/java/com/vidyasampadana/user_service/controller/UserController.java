@@ -8,6 +8,7 @@ import com.vidyasampadana.user_service.entity.Student;
 import com.vidyasampadana.user_service.entity.Volunteer;
 import com.vidyasampadana.user_service.mapper.UserMapper;
 import com.vidyasampadana.user_service.services.UserService;
+import com.vidyasampadana.user_service.services.RegistrationOrchestrator;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
@@ -24,27 +25,28 @@ public class UserController {
 
     // Spring injects UserServiceImpl here automatically because it implements UserService
     private final UserService userService;
+    private final RegistrationOrchestrator registrationOrchestrator;
     //Mapper Injecting
     private final UserMapper userMapper;
 
     // Endpoint to register a Student
     @PostMapping("/register/student")
     public ResponseEntity<UserResponseDto> registerStudent(@Valid @RequestBody Student student) {
-        var savedStudent = userService.registerUser(student);
+        var savedStudent = registrationOrchestrator.register(student);
         return ResponseEntity.ok(userMapper.toDto(savedStudent));
     }
 
     // Endpoint to register a Volunteer
     @PostMapping("/register/volunteer")
     public ResponseEntity<UserResponseDto> registerVolunteer(@Valid @RequestBody Volunteer volunteer) {
-        var savedVolunteer = userService.registerUser(volunteer);
+        var savedVolunteer = registrationOrchestrator.register(volunteer);
         return ResponseEntity.ok(userMapper.toDto(savedVolunteer));
     }
 
     // Endpoint to register an Admin
     @PostMapping("/register/admin")
     public ResponseEntity<UserResponseDto> registerAdmin(@Valid @RequestBody Admin admin) {
-        var savedAdmin = userService.registerUser(admin);
+        var savedAdmin = registrationOrchestrator.register(admin);
         return ResponseEntity.ok(userMapper.toDto(savedAdmin));
     }
 

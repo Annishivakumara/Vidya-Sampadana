@@ -42,7 +42,7 @@ function App() {
     return authView === "login" ? (
       <Login onLogin={handleLogin} onNavigateToRegister={() => setAuthView("register")} />
     ) : (
-      <Register onNavigateToLogin={() => setAuthView("login")} />
+      <Register onLogin={handleLogin} onNavigateToLogin={() => setAuthView("login")} />
     );
   }
 
