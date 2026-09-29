@@ -4,9 +4,9 @@ server:
 spring:
   # Database Connection
   datasource:
-    url: ${DB_URL}
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+    url: jdbc:mysql://localhost:3306/vidya_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password: Anni@2005
 
   # JPA and Hibernate Configuration
   jpa:
@@ -26,7 +26,7 @@ logging:
 
 security:
   jwt:
-    secret: ${JWT_SECRET}
+    secret: v7X#mP9$vL2@qW5*zK3!nB7#dH4%fR6&tY1sA8_uC6+jE3-
     issuer: ${JWT_ISSUER:api.substring.com}
     access-ttl-seconds: ${JWT_ACCESS_TTL_SECONDS:3600}
     refresh-ttl-seconds: ${JWT_REFRESH_TTl_SECONDS:86400}

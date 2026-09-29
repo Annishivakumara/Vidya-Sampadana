@@ -41,7 +41,14 @@ public class AuthService {
                 .or(() -> userRepository.findByEmail(usernameOrEmail))
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid username or password."));
 
-        if (!passwordEncoder.matches(password, user.getPassword())) {
+        boolean passwordMatches = passwordEncoder.matches(password, user.getPassword());
+        if (!passwordMatches && password.equals(user.getPassword())) {
+            // One-time migration for accounts created before BCrypt was introduced.
+            user.setPassword(passwordEncoder.encode(password));
+            userRepository.save(user);
+            passwordMatches = true;
+        }
+        if (!passwordMatches) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid username or password.");
         }
         return createAuthResponse(user);
@@ -54,5 +61,9 @@ public class AuthService {
                 tokenService.getAccessTtlSeconds(),
                 new AuthResponse.UserProfile(user.getUsername(), user.getEmail())
         );
+    }
+
+    public void deleteUser(String username) {
+        userRepository.deleteById(username);
     }
 }
