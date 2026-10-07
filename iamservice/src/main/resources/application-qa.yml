@@ -1,7 +1,0 @@
-spring:
-  config:
-    activate:
-      on-profile: qa
-
-server:
-  port:8088
