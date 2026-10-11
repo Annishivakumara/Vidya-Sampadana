@@ -1,0 +1,124 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins:
+              - "http://localhost:3000"
+              - "http://localhost:5173"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - PATCH
+              - DELETE
+              - OPTIONS
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+      routes:
+        - id: student-service
+          uri: lb://student-service
+          predicates:
+            - Path=/api/student/**
+          filters:
+            - RewritePath=/api/student(?<segment>/?.*), /students${segment}
+
+        - id: users-service
+          uri: http://localhost:8087
+          predicates:
+            - Path=/api/users/**
+          filters:
+            - StripPrefix=0
+
+        - id: user-service
+          uri: http://localhost:8087
+          predicates:
+            - Path=/api/user/**
+          filters:
+            - StripPrefix=0
+
+        - id: iamservice
+          uri: http://localhost:8086
+          predicates:
+            - Path=/api/iam/**
+          filters:
+            - StripPrefix=0
+
+        - id: auth-service
+          uri: http://localhost:8086
+          predicates:
+            - Path=/api/auth/**
+          filters:
+            - StripPrefix=0
+
+        - id: notification-service
+          uri: lb://notification-service
+          predicates:
+            - Path=/api/notification/**
+          filters:
+            - StripPrefix=0
+
+        - id: payment-service
+          uri: lb://payment-service
+          predicates:
+            - Path=/api/payment/**
+          filters:
+            - StripPrefix=0
+
+        - id: kcet-updates
+          uri: lb://kcet-updates
+          predicates:
+            - Path=/api/kcet-updates/**
+          filters:
+            - StripPrefix=0
+
+        - id: neet-updates
+          uri: http://localhost:8089
+          predicates:
+            - Path=/api/neet-updates/**
+          filters:
+            - StripPrefix=0
+
+        - id: about-us-service
+          uri: lb://about-us-service
+          predicates:
+            - Path=/api/about/**, /api/about-us/**
+          filters:
+            - StripPrefix=0
+
+        - id: chat-service
+          uri: http://localhost:8085
+          predicates:
+            - Path=/api/v1/rooms/**, /api/chat/**
+          filters:
+            - StripPrefix=0
+
+        - id: kcet-rank-predictor
+          uri: lb://kcet-rank-predictor
+          predicates:
+            - Path=/api/kcet-rank-predictor/**
+          filters:
+            - StripPrefix=0
+
+eureka:
+  client:
+    enabled: true
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

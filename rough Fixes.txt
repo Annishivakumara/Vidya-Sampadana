@@ -1,0 +1,8 @@
+1. Fix here:
+src/pages/Components/Aboutpage.jsx
+Line 159
+Line 177
+2. Fix here:
+src/pages/Components/LandingPage.jsx
+Line 95
+Line 110
