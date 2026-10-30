@@ -1,0 +1,15 @@
+{
+  "name": "vidya-sampadana-workspace",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "workspaces": [
+    "frontend/frontend"
+  ],
+  "scripts": {
+    "dev": "npm --prefix frontend/frontend run dev -- --port 3000 --host 0.0.0.0",
+    "build": "npm --prefix frontend/frontend run build",
+    "lint": "npm --prefix frontend/frontend run lint",
+    "preview": "npm --prefix frontend/frontend run preview -- --port 3000 --host 0.0.0.0"
+  }
+}

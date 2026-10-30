@@ -3,6 +3,8 @@
 .backend-logs/
 .validation-logs/
 **/target/
+**/node_modules/
+node_modules/
 frontend/node_modules/
 frontend/frontend/node_modules/
 frontend/frontend/dist/

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import "./index.css";
+import "./App.css";
 
 import Navbar from "./components/common/navbar/Navbar";
 import Footer from "./components/common/Footer";
@@ -11,6 +12,7 @@ import StudentsPage from "./pages/StudentsPage";
 import About from './components/home/About';
 import StudentDetailPage from "./pages/StudentDetailPage";
 import { userService } from "./services/userService";
+import ExamUpdatesPage from "./pages/ExamUpdatesPage";
 
 function App() {
   const [user, setUser] = useState(() => {
@@ -58,6 +60,9 @@ function App() {
           <Route path="/students" element={<StudentsPage />} />
           
           <Route path="/students/:id" element={<StudentDetailPage />} />
+          <Route path="/exam-updates" element={<ExamUpdatesPage initialExamFilter="ALL" />} />
+          <Route path="/kcet-updates" element={<ExamUpdatesPage initialExamFilter="KCET" />} />
+          <Route path="/neet-updates" element={<ExamUpdatesPage initialExamFilter="NEET" />} />
           <Route path="/about" element={<About />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

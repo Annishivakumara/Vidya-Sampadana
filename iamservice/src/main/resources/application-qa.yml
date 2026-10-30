@@ -4,4 +4,4 @@ spring:
       on-profile: qa
 
 server:
-  port:8088
+  port: 8086

@@ -1,3 +1,6 @@
 .home-page {
-  /* The navbar is fixed so content starts at the top */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--clr-bg);
 }
