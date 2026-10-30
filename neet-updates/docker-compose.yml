@@ -7,7 +7,7 @@ services:
     container_name: neet-mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: Anni@2005
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Set MYSQL_ROOT_PASSWORD in your environment}
       MYSQL_DATABASE: neet_updates_db
     ports:
       - "3307:3306"
@@ -25,7 +25,7 @@ services:
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/neet_updates_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC
       SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: Anni@2005
+      SPRING_DATASOURCE_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Set MYSQL_ROOT_PASSWORD in your environment}
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
       SPRING_PROFILES_ACTIVE: prod
     depends_on:

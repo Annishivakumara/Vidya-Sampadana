@@ -202,6 +202,8 @@ const Login = ({ onLogin, onNavigateToRegister }) => {
             </div>
           </div>
         </div>
+
+        <p className="login-card__hint">Use the account credentials you registered.</p>
       </main>
     </div>
   );

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { studentService } from "../../services/studentService1";
-import { volunteerService } from "../../services/volunteerService";
-import { adminService } from "../../services/adminService";
+import React, { useState } from 'react';
+import { studentService } from '../../services/studentService1';
+import { volunteerService } from '../../services/volunteerService';
+import { adminService } from '../../services/adminService';
 import "./Login.css";
-import "./Register.css";
+import './Register.css';
 
 const ROLE_OPTIONS = [
   {

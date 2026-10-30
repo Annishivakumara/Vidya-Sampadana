@@ -1,43 +1,58 @@
 package com.vidyasampadana.iamservice.controller;
 
 
+import com.vidyasampadana.iamservice.dto.AuthResponse;
 import com.vidyasampadana.iamservice.model.User;
 import com.vidyasampadana.iamservice.service.AuthService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
+    private final AuthService authService;
+    private final String internalServiceToken;
 
-    @Autowired
-    private AuthService authService; // Injecting the business logic layer
+    public AuthController(AuthService authService,
+                          @Value("${security.internal-service-token:}") String internalServiceToken) {
+        this.authService = authService;
+        this.internalServiceToken = internalServiceToken;
+    }
 
     @PostMapping("/signup")
-    public ResponseEntity<String> signup(@RequestBody User newUser) {
-        String result = authService.registerUser(newUser);
-
-        if ("USERNAME_TAKEN".equals(result)) {
-            return ResponseEntity.badRequest().body("Error: Username is already taken!");
-        }
-
-        return ResponseEntity.ok("User registered successfully via Service Layer!");
+    public ResponseEntity<AuthResponse> signup(@RequestBody User newUser) {
+        return ResponseEntity.ok(authService.registerUser(newUser));
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody User loginRequest) {
-        String result = authService.authenticateUser(loginRequest.getUsername(), loginRequest.getPassword());
+    public ResponseEntity<AuthResponse> login(@RequestBody User loginRequest) {
+        return ResponseEntity.ok(authService.authenticateUser(loginRequest.getUsername(), loginRequest.getPassword()));
+    }
 
-        switch (result) {
-            case "SUCCESS":
-                return ResponseEntity.ok("Login successful! Welcome back.");
-            case "USER_NOT_FOUND":
-                return ResponseEntity.status(404).body("Error: User does not exist!");
-            case "INVALID_CREDENTIALS":
-                return ResponseEntity.status(401).body("Error: Wrong password!");
-            default:
-                return ResponseEntity.internalServerError().body("An unexpected error occurred.");
+    @PostMapping("/logout")
+    public ResponseEntity<Void> logout() {
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/internal/users/{username}")
+    public ResponseEntity<Void> deleteUser(@PathVariable String username,
+                                           @RequestHeader(value = "X-Internal-Service-Token", required = false) String token) {
+        if (internalServiceToken.isBlank() || token == null || !MessageDigest.isEqual(
+                internalServiceToken.getBytes(StandardCharsets.UTF_8), token.getBytes(StandardCharsets.UTF_8))) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Internal service authentication failed.");
         }
+        authService.deleteUser(username);
+        return ResponseEntity.noContent().build();
     }
 }
